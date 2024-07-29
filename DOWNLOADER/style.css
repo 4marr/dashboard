@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    background-color: #323232;
+    color: #ffffff;
+}
+
+p {
+    font-size: 0.90rem;
+}
+
+img{
+    max-width: 500px;
+    width: 50%;
+}
+
+/*.footer {
+    text-align: center;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0px 0;
+    background-color: #323232;
+}*/
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    /* To provide space for the fixed footer */
+    margin: 0 10px;
+    text-align: center;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0 20px;
+    justify-content: center;
+    background-color: #262626;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #69D2E7;
+    color: #262626;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #87CEEB;
+}
+
+#downloadLinks {
+    display: inline-block;
+    width: 95%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#image-file{
+    width: 40%;
+}
+
+#downloadLinks a {
+    color: #69D2E7;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#downloadLinks a:hover {
+    background-color: #444;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.loading i.fas.fa-spinner {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

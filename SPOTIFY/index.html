@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Symbols+Outlined: opsz, wght, FILL, GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-body">
+      <h1 class="md-typescale-display-small w-400">
+        <center> Spotify Downloader </center>
+      </h1>
+      <input type="text" name="" id="url" placeholder="https://open.spotify.com/">
+      <div class="container-button">
+        <button onclick="fetchPlaylist()" id="fetchPlaylist">search</button>
+        <button onclick="deleteUrl()" id="deleteUrl">reset url</button>
+      </div>
+    </div>
+  </nav>
+  <div id="loaderPlaylist" style="opacity:1" class="loader">
+    <div class="loaderTop"></div>
+    <div class="loaderBottom"></div>
+  </div>
+
+  <div id="downloadLinks"></div>
+  <div id="playlistTop" class="playlistTop">
+    <div class="containerPlalistImg">
+      <img class="playlistImg flex" id="playlistImg">
+    </div>
+      <h2 id="playlistName" class="md-typescale-headline-large w-500"></h2>
+      <span id="description" class="md-typescale-body-large w-300"></span>
+      <span id="display_name" class="md-typescale-title-large w-500"></span>
+      <p id="display_total"></p>
+      <br>
+  </div>
+  <ul id="listContainer" class="list-container">
+  </ul>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
