@@ -15,7 +15,9 @@ document
       document.getElementById("listContainerSearch").innerHTML = "";
       document.getElementById("container-anime").innerHTML = "";
       document.getElementById("container-stream").innerHTML = "";
+      document.getElementById("container-genre").innerHTML = "";
       document.getElementById("containerListEpisode").innerHTML = "";
+      document.getElementById("cover-ads").style.display = "none";
       fetch(`${apiURL}search/?keyword=${encodeURIComponent(value)}`)
         .then((res) => {
           return res.json();
