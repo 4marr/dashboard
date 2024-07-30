@@ -216,9 +216,9 @@ p {
 
 @keyframes Gradient-ania {
     0% {
-        background-position: left;
-    } 100% {
         background-position: right;
+    } 100% {
+        background-position: left;
     }
 }
 

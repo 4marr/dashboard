@@ -9,7 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="style.css">
 
-	<title>Report Bug</title>
+	<title>Dashboard ar</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 			<span class="text">ar.dev</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<li class="active">
 				<a href="\dashboard\DASHBOARD\index.html">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -39,7 +39,7 @@
 					<span class="text">Information</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="\dashboard\Report Dashboard\index.html">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Report Bug</span>
@@ -86,10 +86,9 @@
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<i class='bx bxs-bell' ></i>				
 			</a>
-			<a href="/dashboard/Profile Dashboard?index.html" class="profile">
+			<a href="\dashboard\Profile Dashboard\index.html" class="profile">
 				<img src="people.jpg">
 			</a>
 		</nav>
@@ -106,30 +105,116 @@
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="#">Report Bug</a>
+							<a class="active" href="#">Home</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-spreadsheet'></i>
+					<span class="text">
+						<h3>7</h3>
+						<p>Features</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3 id="countVisitors">0</h3>
+						<p>Visitors</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>$0</h3>
+						<p>Free To Use</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bx-block'></i>
+					<span class="text">
+						<h3>No-Ads</h3>
+						<p>Clean</p>
+					</span>
+				</li>
+			</ul>
 
 
 			<div class="table-data">
-				<div class="todo">
+				<div class="order">
+					<div class="head-contributor">
+						<h3>Contributor</h3>
+						<br>
+					</div>
+					<table class="table-contributor">
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Comment</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src="people.jpg">
+									<div class="container-desc-user">
+										<p style="font-weight: 600;">Ammar</p>
+										<p class="desc-user">Web developer</p>
+									</div>
+								</td>
+								<td>rwarwrawrarwrawrwrarwrarw</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="order">
 					<div class="head">
-						<h3>Bug Report</h3>
+						<h3>Thanks To</h3>
 					</div>
-					<div class="report">
-						<p>apa yang terjadi?</p>
-						<textarea name="" id="description" rows="4"></textarea>
-						<div class="container-button">
-							<button onclick="send()">Kirim!</button>
-						</div>
-					</div>
-					<div class="done">
-						<p>Laporan berhasil dikirim!</p>
-						<button onclick="back()">kembali</button>
-					</div>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<p>My Parents</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Jauhariq</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Nyx Altair</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Itzpire</p>
+							</tr>
+							<tr>
+								<td>
+									<p>Latif Harkat</p>
+							</tr>
+							<tr>
+								<td>
+									<p>Minin</p>
+							</tr>
+							<tr>
+								<td>
+									<p>Zanixon Dev</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>And all of you who have used the web wisely and always supported me.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</main>
@@ -138,10 +223,6 @@
 	<!-- CONTENT -->
 	
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-	integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="script.js"></script>
 	<script src="script.js"></script>
 </body>
 </html>

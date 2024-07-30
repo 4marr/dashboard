@@ -65,9 +65,10 @@ async function searchVideo() {
             } else {
                 // downloadLinks += `<p>${data.result.desc} │ ${data.result.author.nickname}</p>`;
                 downloadLinks += `
-                    <a href="${data.result.video1}" target="_blank" download>Download Video</a>
+                    <img src="${data.result.thumbnail}" alt="image_file" id="image-file">
+                    <p>${data.result.caption}</p>
+                    <a href="${data.result.video_sd}" target="_blank" download>Download Video</a>
                     <a href="${data.result.video_hd}" target="_blank" download>Download HD Video</a>
-                    <a href="${data.result.video_watermark}" target="_blank" download>Download Watermark Video</a>
                     <a href="${data.result.music}" target="_blank" download>Download Music Audio</a>
                 `;
             }

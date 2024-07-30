@@ -281,7 +281,7 @@ body {
 	border-radius: 50%;
 }
 #content nav .switch-mode {
-	display: block;
+	display: none;
 	min-width: 50px;
 	height: 25px;
 	border-radius: 25px;
@@ -302,6 +302,9 @@ body {
 }
 #content nav #switch-mode:checked + .switch-mode::before {
 	left: calc(100% - (25px - 4px) - 2px);
+}
+.bxs-smile {
+	opacity: 0;
 }
 /* NAVBAR */
 

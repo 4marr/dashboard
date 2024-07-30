@@ -2,7 +2,7 @@
 
 /*Theme*/
 :root {
-    --background-color1: #3B3946;
+    --background-color1: #000914;
     --background-input: #262626;
     --text-color: #FFFFFF;
     --text-color-client: #FFFFFF;
@@ -151,7 +151,7 @@ p {
 }
 
 .chatBot .chatBox {
-    height: 91.5%;
+    height: 92%;
     overflow-y: auto;
     padding: 57px 0 0 0;
 }
@@ -180,7 +180,7 @@ p {
 li:nth-child(even){
     display: flex;
     align-items: flex-start;
-    background: #656C77;
+    background: #212529;
 }
 
 .chatBox .incoming p {
@@ -213,7 +213,7 @@ img {
     display: flex;
     align-items: center;
     gap: 5px;
-    background: #3B3946;
+    background: #212529;
     padding: 0 20px;
     margin: 0 0 5px 0;
     border-top: 1px solid #000000;
@@ -222,7 +222,7 @@ img {
 
 .chat-input input {
     font-family: "Poppins", sans-serif;
-    background: #3B3946;
+    background: #212529;
     color: var(--text-color);
     font-style: normal;
     height: 50px;
@@ -268,5 +268,9 @@ img {
 }
 
 .chat-input input:valid ~ #paste-button {
+    display: none;
+}
+
+#theme-button {
     display: none;
 }
