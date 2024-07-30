@@ -28,8 +28,10 @@ li {
 	--red: #DB504A;
 	--yellow: #FFCE26;
 	--light-yellow: #FFF2C6;
-	--orange: #FD7238;
-	--light-orange: #FFE0D3;
+	--green: #52B788;
+	--light-green: #D8F3DC;
+	--red: #C71F37;
+	--light-red: #F4D2D7;
 }
 
 html {
@@ -281,7 +283,7 @@ body {
 	border-radius: 50%;
 }
 #content nav .switch-mode {
-	display: block;
+	display: none;
 	min-width: 50px;
 	height: 25px;
 	border-radius: 25px;
@@ -302,6 +304,9 @@ body {
 }
 #content nav #switch-mode:checked + .switch-mode::before {
 	left: calc(100% - (25px - 4px) - 2px);
+}
+.bxs-smile {
+	opacity: 0;
 }
 /* NAVBAR */
 
@@ -394,8 +399,12 @@ body {
 	color: var(--yellow);
 }
 #content main .box-info li:nth-child(3) .bx {
-	background: var(--light-orange);
-	color: var(--orange);
+	background: var(--light-green);
+	color: var(--green);
+}
+#content main .box-info li:nth-child(4) .bx {
+	background: var(--light-red);
+	color: var(--red);
 }
 #content main .box-info li .text h3 {
 	font-size: 24px;
