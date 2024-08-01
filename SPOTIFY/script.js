@@ -5,6 +5,7 @@ window.addEventListener("load", function () {
 
 var api = "https://itzpire.com/download/spotify";
 var apiData = "https://api.mininxd.my.id/spotify";
+var searchApi = "https://itzpire.com/search/spotify"
 
 function fetchPlaylist() {
   var getURL = document.getElementById("url").value;
@@ -21,15 +22,15 @@ function fetchPlaylist() {
   } else {
     document.getElementById("downloadLinks").innerHTML = "";
   }
-  const supportedUrls = ["spotify.com/track", "spotify.com/playlist"];
-  if (!supportedUrls.some((supportedUrl) => getURL.includes(supportedUrl))) {
-    document.getElementById(
-      "downloadLinks"
-    ).innerHTML = `<p style="color: #ff0000;">Unsupported URL! Hanya support spotify`;
-    document.getElementById("fetchPlaylist").innerHTML = "search";
-    getRL.readOnly = false;
-    return;
-  }
+  // const supportedUrls = ["spotify.com/track", "spotify.com/playlist"];
+  // if (!supportedUrls.some((supportedUrl) => getURL.includes(supportedUrl))) {
+  //   document.getElementById(
+  //     "downloadLinks"
+  //   ).innerHTML = `<p style="color: #ff0000;">Unsupported URL! Hanya support spotify`;
+  //   document.getElementById("fetchPlaylist").innerHTML = "search";
+  //   getRL.readOnly = false;
+  //   return;
+  // }
   
   if (getURL.includes("spotify.com/track")) {
     const sptfyTrack = `https://itzpire.com/download/spotify?url=${encodeURIComponent(
@@ -87,6 +88,112 @@ function fetchPlaylist() {
           display_name.innerHTML = data.owner.display_name;
           display_total.innerHTML = data.tracks.total + " songs";
 
+          var li = document.createElement("li");
+          li.classList.add("list");
+          var img = document.createElement("img");
+          img.classList.add("imgEl");
+          img.setAttribute("src", albumImg);
+          li.append(img);
+          
+          var div = document.createElement("div");
+          div.classList.add("songInfo");
+          var span1 = document.createElement("span");
+          var span2 = document.createElement("span");
+          span1.classList.add("md-typescale-title-large", "w-600", "songName");
+          span1.innerText = songs;
+          span2.classList.add("md-typescale-body-medium", "w-400");
+          span2.innerHTML = "<br>" + artistName;
+          div.append(span1);
+          div.appendChild(span2);
+          
+          var a = document.createElement("a");
+          var div1 = document.createElement("div");
+          var button = document.createElement("button");
+          var button2 = document.createElement("button");
+          button.classList.add("button");
+          button2.classList.add("button", `download${i}`);
+          var mdFillBtn = document.createElement("md-filled-button");
+          var mdFillBtn2 = document.createElement("md-filled-button");
+
+          var span_btn1 = document.createElement("span");
+          var span_btn2 = document.createElement("span");
+          a.setAttribute("href", "url.html");
+          div1.classList.add("downloadBtn");
+          span_btn1.classList.add("material-icons");
+          span_btn2.classList.add("material-icons");
+          span_btn1.innerHTML = "download";
+          span_btn2.innerHTML = "check";
+          div1.append(button);
+          div1.append(button2);
+          button.append(mdFillBtn);
+          button2.append(mdFillBtn2);
+          mdFillBtn.append(span_btn1);
+          mdFillBtn2.append(span_btn2);
+
+          button.style.fontSize = "0px";
+          button.append(i);
+          button2.style.transform = "scale(0.0001)";
+          
+          li.append(div1);
+          li.append(div);
+          listContainer.append(li);
+          
+          // Download Button Event
+          button.addEventListener("click", function (event) {
+            console.log(`Song name: ${songs}`);
+            console.log(`Song ID: ${songId}`);
+            
+            this.disabled = true;
+            let btn2 = document.querySelector(`.${this.textContent}`);
+            
+            this.innerHTML = `<md-filled-button>
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </md-filled-button>`;
+            
+            fetch(`${api}?url=https://open.spotify.com/track/${songId}`, {
+              headers: { accept: "application/json" },
+            })
+            .then((res) => {
+              return res.json();
+            })
+            .then((data) => {
+                this.style.display = "none";
+                btn2.style.transform = "scale(1)";
+                console.log(data);
+
+                btn2.addEventListener("click", function () {
+                  window.open(data.data.download).focus();
+                });
+              });
+            });
+          }
+      })
+      .catch((e) => {
+        console.log(e);
+        getRL.readOnly = false;
+      });
+    } else {
+      fetch(`${searchApi}?query=${getURL}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        console.log(getURL);
+        listContainer.style.padding = "10px 0 10px 0";
+        const fetchButton = document.getElementById("fetchPlaylist");
+        const delButton = document.getElementById("deleteUrl");
+        fetchButton.style.display = "none";
+        delButton.style.display = "block";
+        document.getElementById("playlistTop").style.display = "none";
+        
+        for (var i = 0; i < data.data.length; i++) {
+          let song = data.data;
+          let songs = data.data[i].album.name;
+          let songId = data.data[i].id;
+          let artistName = data.data[i].artists[0].name;
+          let albumImg = data.data[i].album.images[1].url;
+          
           var li = document.createElement("li");
           li.classList.add("list");
           var img = document.createElement("img");
