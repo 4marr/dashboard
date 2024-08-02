@@ -18,8 +18,8 @@ p {
 }
 
 img{
-    max-width: 500px;
-    width: 50%;
+    max-width: 1000px;
+    width: 100%;
 }
 
 /*.footer {
@@ -108,7 +108,7 @@ button:hover {
 }
 
 #image-file{
-    width: 40%;
+    width: 100%;
 }
 
 #downloadLinks a {

@@ -30,9 +30,8 @@ async function searchVideo() {
 
         const ig = `https://api.nyxs.pw/dl/ig?url=${encodeURIComponent(url)}`;
         const tt = `https://api.nyxs.pw/dl/tiktok?url=${encodeURIComponent(url)}`;
-        //const yt = `https://api.nyxs.pw/dl/yt?url=${encodeURIComponent(url)}`;
-        const yt = `https://itzpire.com/download/youtube?url=${encodeURIComponent(url)}`
-        const Playt = `https://itzpire.com/download/play-youtube?title=${encodeURIComponent(url)}`
+        const yt = `https://api.nyxs.pw/dl/yt-direct?url=${encodeURIComponent(url)}`
+        const searchYt = `https://itzpire.com/search/youtube?query=${encodeURIComponent(url)}`
         const fb = `https://api.nyxs.pw/dl/fb?url=${encodeURIComponent(url)}`;
         const sptfy = `https://itzpire.com/download/spotify?url=${encodeURIComponent(url)}`
 
@@ -119,13 +118,13 @@ async function searchVideo() {
             downloadButton.style.display = "none";
             
             downloadLinks += `
-            <img src="${data.data.video.thumb}" alt="image_file" id="image-file">
-            <p>${data.data.video.title} │ ${data.data.video.channel} </p>
+            <img src="${data.result.thumbnail}" alt="image_file" id="image-file">
+            <p>${data.result.title} [ ${data.result.channelName} ]</p>
             `;
-            downloadLinks += `<a href="${data.data.video.url}" download>Download Video</a>`;
-            downloadLinks += `<a href="${data.data.audio.url}" download>Download Musik</a>`;
+            downloadLinks += `<a href="${data.result.urlVideo}" download>Download Video</a>`;
+            downloadLinks += `<a href="${data.result.urlAudio}" download>Download Musik</a>`;
         } else {
-            response = await fetch(tt);
+            response = await fetch(searchYt);
             data = await response.json();
             downloadButton.style.display = "none";
         }
