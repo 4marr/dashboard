@@ -250,6 +250,11 @@ li button {
     flex-direction: column;
 }
 
+.data-info-episode {
+    height: 75%;
+    -webkit-tap-highlight-color: transparent;
+}
+
 .list-episode {
     background: #303030;
     margin: 5px 0;
@@ -259,12 +264,11 @@ li button {
 
 .stream-info {
     width: 100%;
-    margin-top: 20px;
 }
 
 iframe {
     width: 100%;
-    height: 230px;
+    height: 200px;
     object-fit: cover;
 }
 

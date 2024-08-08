@@ -17,7 +17,8 @@ document
       document.getElementById("container-stream").innerHTML = "";
       document.getElementById("container-genre").innerHTML = "";
       document.getElementById("containerListEpisode").innerHTML = "";
-      document.getElementById("cover-ads").style.display = "none";
+      document.getElementById("cover-ads").style.display = "none"
+      loader.style.display = "flex";
       fetch(`${apiURL}search/?keyword=${encodeURIComponent(value)}`)
         .then((res) => {
           return res.json();
@@ -26,6 +27,7 @@ document
           console.log(data);
           console.log(value);
           document.getElementById("list-anime").style.display = "none";
+          loader.style.display = "none";
           for (var i = 0; i < data.data.data.length; i++) {
             let coverImg = data.data.data[i].cover;
             let anime = data.data.data[i].judul;
@@ -85,6 +87,7 @@ document
             button.addEventListener("click", function (event) {
               console.log(`Anime name: ${anime}`);
               console.log(`Anime ID: ${animeId}`);
+              loader.style.display = "flex";
 
               fetch(`${apiURL}info/?data=${animeId}`, {
                 headers: { accept: "application/json" },
@@ -98,6 +101,7 @@ document
                   document.getElementById("list-anime").innerHTML = "";
                   document.getElementById("cover-ads").innerHTML = "";
                   document.getElementById("listContainerSearch").innerHTML = "";
+                  loader.style.display = "none";
                   let containerAnime =
                     document.getElementById("container-anime");
                   containerAnime.innerHTML = `
@@ -141,6 +145,7 @@ document
                     containerListEpisode.append(liEps);
 
                     button2.addEventListener("click", function (e) {
+                      loader.style.display = "flex";
                       fetch(`${apiURL}view/?data=${dataEpisode}`, {
                         headers: { accept: "application/json" },
                       })
@@ -149,6 +154,7 @@ document
                         })
                         .then((data) => {
                           console.log(data);
+                          loader.style.display = "none";
                           data = data;
                           document.getElementById("container-anime").innerHTML =
                             "";
@@ -162,7 +168,7 @@ document
                         <iframe src="${data.data.stream}" frameborder="0" allowfullscreen></iframe>
                         <div class="more-info">
                           <h2>${data.data.judul_episode}</h2>
-                          <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton!</p> 
+                          <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton~</p> 
                         </div>
                       </div>
                       `;
@@ -215,6 +221,7 @@ fetch(`${apiURL}genres`)
       button.addEventListener("click", function (event) {
         console.log(`genre name: ${genre}`);
         console.log(`genre ID: ${genreId}`);
+        loader.style.display = "flex";
 
         fetch(`${apiURL}genres/${genreId}/`, {
           headers: { accept: "application/json" },
@@ -228,6 +235,7 @@ fetch(`${apiURL}genres`)
             document.getElementById("list-anime").innerHTML = "";
             document.getElementById("cover-ads").innerHTML = "";
             document.getElementById("container-genre").innerHTML = "";
+            loader.style.display = "none";
             for (var i = 0; i < data.data.data.length; i++) {
               let coverImg = data.data.data[i].cover;
               let anime = data.data.data[i].judul;
@@ -287,6 +295,7 @@ fetch(`${apiURL}genres`)
               button.addEventListener("click", function (event) {
                 console.log(`Anime name: ${anime}`);
                 console.log(`Anime ID: ${animeId}`);
+                loader.style.display = "flex";
   
                 fetch(`${apiURL}info/?data=${animeId}`, {
                   headers: { accept: "application/json" },
@@ -300,6 +309,7 @@ fetch(`${apiURL}genres`)
                     document.getElementById("list-anime").innerHTML = "";
                     document.getElementById("cover-ads").innerHTML = "";
                     document.getElementById("listContainerSearch").innerHTML = "";
+                    loader.style.display = "none";
                     let containerAnime =
                       document.getElementById("container-anime");
                     containerAnime.innerHTML = `
@@ -343,6 +353,7 @@ fetch(`${apiURL}genres`)
                       containerListEpisode.append(liEps);
   
                       button2.addEventListener("click", function (e) {
+                        loader.style.display = "flex";
                         fetch(`${apiURL}view/?data=${dataEpisode}`, {
                           headers: { accept: "application/json" },
                         })
@@ -351,6 +362,7 @@ fetch(`${apiURL}genres`)
                           })
                           .then((data) => {
                             console.log(data);
+                            loader.style.display = "none";
                             data = data;
                             document.getElementById("container-anime").innerHTML =
                               "";
@@ -364,7 +376,7 @@ fetch(`${apiURL}genres`)
                           <iframe src="${data.data.stream}" frameborder="0" allowfullscreen></iframe>
                           <div class="more-info">
                             <h2>${data.data.judul_episode}</h2>
-                            <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton!</p> 
+                            <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton~</p> 
                           </div>
                         </div>
                         `;
@@ -443,6 +455,7 @@ fetch(`${apiURL}ongoing`)
       button.addEventListener("click", function (event) {
         console.log(`Anime name: ${anime}`);
         console.log(`Anime ID: ${animeId}`);
+        loader.style.display = "flex";
 
         fetch(`${apiURL}info/?data=${animeId}`, {
           headers: { accept: "application/json" },
@@ -455,6 +468,7 @@ fetch(`${apiURL}ongoing`)
             data = data;
             document.getElementById("list-anime").innerHTML = "";
             document.getElementById("cover-ads").innerHTML = "";
+            loader.style.display = "none";
             let containerAnime = document.getElementById("container-anime");
             containerAnime.innerHTML = `
                 <div class="cover-info">
@@ -496,6 +510,7 @@ fetch(`${apiURL}ongoing`)
               containerListEpisode.append(liEps);
 
               button2.addEventListener("click", function (e) {
+                loader.style.display = "flex";
                 fetch(`${apiURL}view/?data=${dataEpisode}`, {
                   headers: { accept: "application/json" },
                 })
@@ -504,6 +519,7 @@ fetch(`${apiURL}ongoing`)
                   })
                   .then((data) => {
                     console.log(data);
+                    loader.style.display = "none";
                     data = data;
                     document.getElementById("container-anime").innerHTML = "";
                     let containerStream =
@@ -513,7 +529,7 @@ fetch(`${apiURL}ongoing`)
                   <iframe src="${data.data.stream}" frameborder="0" allowfullscreen></iframe>
                   <div class="more-info">
                     <h2>${data.data.judul_episode}</h2>
-                    <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton!</p> 
+                    <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton~</p> 
                   </div>
                 </div>
                 `;
@@ -589,6 +605,7 @@ fetch(`${apiURL}complete`)
       button.addEventListener("click", function (event) {
         console.log(`Anime name: ${anime}`);
         console.log(`Anime ID: ${animeId}`);
+        loader.style.display = "flex";
 
         fetch(`${apiURL}info/?data=${animeId}`, {
           headers: { accept: "application/json" },
@@ -601,6 +618,7 @@ fetch(`${apiURL}complete`)
             data = data;
             document.getElementById("list-anime").innerHTML = "";
             document.getElementById("cover-ads").innerHTML = "";
+            loader.style.display = "none";
             let containerAnime = document.getElementById("container-anime");
             containerAnime.innerHTML = `
                 <div class="cover-info">
@@ -642,6 +660,7 @@ fetch(`${apiURL}complete`)
               containerListEpisode.append(liEps);
 
               button2.addEventListener("click", function (e) {
+                loader.style.display = "flex";
                 fetch(`${apiURL}view/?data=${dataEpisode}`, {
                   headers: { accept: "application/json" },
                 })
@@ -650,6 +669,7 @@ fetch(`${apiURL}complete`)
                   })
                   .then((data) => {
                     console.log(data);
+                    loader.style.display = "none";
                     data = data;
                     document.getElementById("container-anime").innerHTML = "";
                     let containerStream =
@@ -659,7 +679,7 @@ fetch(`${apiURL}complete`)
                   <iframe src="${data.data.stream}" frameborder="0" allowfullscreen></iframe>
                   <div class="more-info">
                     <h2>${data.data.judul_episode}</h2>
-                    <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton!</p> 
+                    <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton~</p> 
                   </div>
                 </div>
                 `;
