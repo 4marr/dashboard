@@ -32,7 +32,7 @@ textarea.addEventListener("input", e => {
     var height = e.target.scrollHeight;
     textarea.style.height = height + 'px';
 
-    if (height > 70) {
+    if (height > 60) {
         textarea.style.borderRadius = "15px";
     } else {
         textarea.style.borderRadius = "30px";
@@ -62,6 +62,7 @@ let generateResponse = (incomingChatLi) => {
     let hasil = incomingChatLi.querySelector("p")
     chatInput.readOnly = true;
     chatInput.placeholder = 'Mohon tunggu...'
+    textarea.style.borderRadius = "30px";
     fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
@@ -112,17 +113,17 @@ function divSatu() {
     document.getElementById("message").value = "Jelaskan konsep [konsep] dari sudut pandang [objek]. Gunakan metafora dan analogi yang kreatif."
     var height = textarea.scrollHeight;
     textarea.style.height = height + 'px';
-    if (height > 70) {
+    if (height > 60) {
         textarea.style.borderRadius = "15px";
     } else {
         textarea.style.borderRadius = "30px";
     }
 }
 function divDua() {
-    document.getElementById("message").value = "Bayangkan dunia 100 tahun dari sekarang. Bagaimana [Teknologi/Perubahan sosial] telah menubah cara kita hidup? Ceritakan sebuah kisah singkat yang menggambarkan perubahan tersebut."
+    document.getElementById("message").value = "Bayangkan dunia 100 tahun dari sekarang. Bagaimana [Teknologi/Perubahan sosial] telah merubah cara kita hidup? Ceritakan sebuah kisah singkat yang menggambarkan perubahan tersebut."
     var height = textarea.scrollHeight;
     textarea.style.height = height + 'px';
-    if (height > 70) {
+    if (height > 60) {
         textarea.style.borderRadius = "15px";
     } else {
         textarea.style.borderRadius = "30px";
@@ -132,7 +133,7 @@ function divTiga() {
     document.getElementById("message").value = "Buatlah dialog antara [karakter 1] dan [karakter 2]. Tema dialog adalah [tema]."
     var height = textarea.scrollHeight;
     textarea.style.height = height + 'px';
-    if (height > 70) {
+    if (height > 60) {
         textarea.style.borderRadius = "15px";
     } else {
         textarea.style.borderRadius = "30px";
@@ -142,7 +143,7 @@ function divEmpat() {
     document.getElementById("message").value = "Buatlah resep unik yang menggabungkan [bahan] degan [bahan]. Pertimbangkan tekstur, rasa, dan tampilan hidangan."
     var height = textarea.scrollHeight;
     textarea.style.height = height + 'px';
-    if (height > 70) {
+    if (height > 60) {
         textarea.style.borderRadius = "15px";
     } else {
         textarea.style.borderRadius = "30px";
@@ -152,7 +153,7 @@ function divLima() {
     document.getElementById("message").value = "Kemukakan ide bisnis yang dapat memecahkan masalah [masalah]. Jelaskan target pasar, model bisnis, dan keunggulan kompetitif."
     var height = textarea.scrollHeight;
     textarea.style.height = height + 'px';
-    if (height > 70) {
+    if (height > 60) {
         textarea.style.borderRadius = "15px";
     } else {
         textarea.style.borderRadius = "30px";
