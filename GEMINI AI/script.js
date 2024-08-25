@@ -79,6 +79,7 @@ let generateResponse = (incomingChatLi) => {
         () => { chatBox.scrollTo(0, chatBox.scrollHeight)
             chatInput.readOnly = false;
             chatInput.placeholder = 'Masukkan pertanyaanmu disini...';
+            textarea.style.borderRadius = "30px";
         }
     );
 }
