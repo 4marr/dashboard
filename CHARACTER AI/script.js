@@ -1,11 +1,11 @@
 var loader = document.getElementById('loader');
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     loader.style.display = 'none';
 });
 
-function back(){
-    window.open("/ar/index.html")
+function back() {
+    window.open("\dashboard\Playground\index.html")
 }
 
 function faq() {
@@ -17,11 +17,11 @@ function closeFaq() {
 }
 
 var iconTheme = document.getElementById("theme-button")
-function changeTheme(){
+function changeTheme() {
     document.body.classList.toggle("lightTheme")
-    if(document.body.classList.contains("lightTheme")){
+    if (document.body.classList.contains("lightTheme")) {
         iconTheme.innerText = "dark_mode";
-    }else{
+    } else {
         iconTheme.innerText = "light_mode";
     }
 }
@@ -35,30 +35,58 @@ let userMessage;
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className)
-    let chatContent = className === "outgoing" ? `<p></p>`: `<pre><p></p></pre>`
+    let chatContent = className === "outgoing" ? `<p></p>` : `<pre><p></p></pre>`
     chatLi.innerHTML = chatContent;
     chatLi.querySelector("p").textContent = message;
     return chatLi;
 }
 
 let generateResponse = (incomingChatLi) => {
-    const prompt = document.getElementById('message').value;
-    let apiUrl = `https://api.nyxs.pw/ai/character-ai?prompt=${encodeURIComponent(prompt)}&gaya=balas%60dengan%60tsundere`;
-    let hasil = incomingChatLi.querySelector("p")
-    
-    fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-        if (data.status) {
-            hasil.textContent = data.result;
-        } else {
-            hasil.textContent = 'Maaf, saya tidak mengerti apa yang Anda tanyakan. Bisakah Anda ulangi pertanyaan Anda?';
-        }
-    })
-    .catch(error => {
-        hasil.textContent = 'Terjadi kesalahan pada sistem, coba lagi nanti.';
-        console.error('Error:', error);
-    }).finally(() => chatBox.scrollTo(0, chatBox.scrollHeight));
+    const API_URL = "https://imphnen-ai.vercel.app/api/llm/llama";
+    const messageElement = incomingChatLi.querySelector("p");
+    chatInput.readOnly = true;
+    chatInput.placeholder = 'Mohon tunggu...'
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            model: "meta-llama/Meta-Llama-3.1-405B-Instruct",
+            messages: [
+                {
+                    role: "system",
+                    content: "Amira adalah teman ngobrol yang memiliki kepribadian ceria dan kreatif. Dia suka ngobrol santai, mendengarkan musik, dan membuat orang lain tertawa. Amira diciptakan oleh Ammar sebagai teman berbincang. Bahasa yang digunakan adalah bahasa Indonesia sehari-hari, seperti yang digunakan anak muda."
+                },
+                {
+                    role: "user",
+                    content: userMessage,
+                },
+            ],
+            max_tokens: 128,
+            temperature: 0.9,
+            presence_penalty: 0.1,
+            frequency_penalty: 0,
+            top_p: 0.9,
+            top_k: 100
+        }),
+    };
+    fetch(API_URL, requestOptions)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            messageElement.textContent = data.data.choices[0].message.content;
+        })
+        .catch((error) => {
+            console.log(error);
+        }).finally(
+            () => {
+                chatBox.scrollTo(0, chatBox.scrollHeight)
+                chatInput.readOnly = false;
+                chatInput.placeholder = 'Masukkan pertanyaanmu disini...';
+            }
+            );
 }
 
 const handleChat = () => {
@@ -72,20 +100,6 @@ const handleChat = () => {
     chatBox.scrollTo(0, chatBox.scrollHeight)
     generateResponse(incomingChatLi)
     chatInput.value = "";
-
-    var counter = 6;
-    setInterval(function() {
-        counter--;
-        if (counter >= 0) {
-            chatInput.readOnly = true;
-            chatInput.placeholder = 'Mohon tunggu dalam ' + counter + ' detik';
-        }
-        if (counter === 0) {
-            chatInput.readOnly = false;
-            chatInput.placeholder = 'Masukkan pertanyaanmu disini...';
-        }
-    },
-        1000);
 }
 
 sendChatBtn.addEventListener("click",
@@ -94,7 +108,7 @@ sendChatBtn.addEventListener("click",
 const paste = document.getElementById('paste-button');
 
 paste.addEventListener("click",
-    async() => {
+    async () => {
         const read = await navigator.clipboard.readText()
         chatInput.value = read
     })

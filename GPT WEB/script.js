@@ -57,6 +57,8 @@ let generateResponse = (incomingChatLi) => {
     let apiUrl = `https://itzpire.com/ai/gpt-web?q=${encodeURIComponent(prompt)}&chat_id=${chatId}`;
     console.log(apiUrl)
     let hasil = incomingChatLi.querySelector("p")
+    chatInput.readOnly = true;
+    chatInput.placeholder = 'Mohon tunggu...'
     
     fetch(apiUrl)
     .then(response => response.json())
@@ -71,7 +73,11 @@ let generateResponse = (incomingChatLi) => {
     .catch(error => {
         hasil.textContent = 'Terjadi kesalahan pada sistem, coba lagi nanti.';
         console.error('Error:', error);
-    }).finally(() => chatBox.scrollTo(0, chatBox.scrollHeight));
+    }).finally(() => { chatBox.scrollTo(0, chatBox.scrollHeight)
+        chatInput.readOnly = false;
+        chatInput.placeholder = 'Masukkan pertanyaanmu disini...';
+    }
+    );
 }
 
 const handleChat = () => {
@@ -85,20 +91,6 @@ const handleChat = () => {
     chatBox.scrollTo(0, chatBox.scrollHeight)
     generateResponse(incomingChatLi)
     chatInput.value = "";
-
-    var counter = 6;
-    setInterval(function() {
-        counter--;
-        if (counter >= 0) {
-            chatInput.readOnly = true;
-            chatInput.placeholder = 'Mohon tunggu dalam ' + counter + ' detik';
-        }
-        if (counter === 0) {
-            chatInput.readOnly = false;
-            chatInput.placeholder = 'Masukkan pertanyaanmu disini...';
-        }
-    },
-        1000);
 }
 
 sendChatBtn.addEventListener("click",

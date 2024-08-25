@@ -4,21 +4,27 @@
 :root {
     --background-color1: #FFFFFF;
     --background-input: #F0F0F5;
+    --background-div: rgba(223, 240, 255, 0.5);
+    --background-div-hover: rgba(207, 232, 255, 1);
     --text-color: #0F1921;
     --text-color-client: #FFFFFF;
     --span-color: #405DE6;
     --header-background-color: rgba( 255, 255, 255, 0.5);
     --welcome-text-color: rgba( 0, 0, 0, 0.2);
+    --invert--color: invert(0%);
 }
 
 .darkTheme {
     --background-color1: #000000;
     --background-input: #262626;
+    --background-div: rgba(223, 240, 255, 0.2);
+    --background-div-hover: rgba(207, 232, 255, 0.3);
     --text-color: #FFFFFF;
     --text-color-client: #FFFFFF;
     --span-color: #405DE6;
     --header-background-color: rgba( 0, 0, 0, 0.4);
     --welcome-text-color: rgba( 255, 255, 255, 0.3);
+    --invert--color: invert(100%);
 }
 
 * {
@@ -108,6 +114,10 @@ p {
     font-weight: 500;
 }
 
+strong {
+    font-weight: 600;
+}
+
 .chatBot {
     position: fixed;
     width: 100%;
@@ -164,7 +174,7 @@ p {
 }
 
 .chatBot .chatBox {
-    height: 91.5%;
+    height: 90.5%;
     overflow-y: auto;
     padding: 30px 20px 10px;
 }
@@ -190,12 +200,21 @@ p {
     white-space: pre-wrap;
 }
 
-
-
 .chatBox .incoming p {
     color: var(--text-color);
-    background: var(--background-input);
+    background: none;
     border-radius: 10px 10px 10px 0;
+}
+
+li:nth-child(odd){
+    display: flex;
+    align-items: flex-start;
+}
+
+.sparkle {
+    margin-top: 13px;
+    width: 20px;
+    filter: var(--invert--color);
 }
 
 .chatBox .incoming .welcome {
@@ -222,6 +241,60 @@ p {
     }
 }
 
+.saran {
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-color: transparent transparent;
+    scroll-snap-type: x mandatory;
+}
+
+.saran::-webkit-scrollbar {
+    display: none;
+}
+
+.chatBox > .saran > .container-saran {
+    display: flex;
+    overflow-y: hidden;
+    width: 1000px;
+    margin-top: 30px;
+}
+
+.chatBox > .saran > .container-saran > div {
+    position: relative;
+    cursor: pointer;
+    scroll-snap-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px 20px 50px 20px;
+    margin: 0 10px 0 0;
+    background: var(--background-div);
+    color: var(--text-color);
+}
+
+.chatBox > .saran > .container-saran > div:hover {
+    background: var(--background-div-hover);
+}
+
+.container-saran > div > .itemDesk {
+    font-size: 0.80rem;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.container-saran > div > .itemHead {
+    font-size: 0.90rem;
+    margin-top: 5px;
+}
+
+.container-saran > div > span {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0 10px 10px 0;
+}
+
 pre {
     display: block;
     white-space: pre-wrap;
@@ -232,49 +305,61 @@ pre {
     bottom: 0;
     width: 100%;
     display: flex;
-    align-items: center;
-    gap: 5px;
-    background: var(--background-input);
+    align-items: flex-end;
+    /*background: var(--background-input);*/
     padding: 0 20px;
-    margin: 0 0 5px 0;
+    margin: 0 0 20px 0;
     border-top: 1px solid var(--background-color1);
     border-radius: 33px;
     overflow: hidden;
     box-sizing: border-box;
+    gap: 5px;
 }
 
-.chat-input input {
+.chat-input textarea {
     font-family: "Poppins", sans-serif;
     background: var(--background-input);
     color: var(--text-color);
+    display: flex;
+    justify-content: center;
     font-style: normal;
     height: 50px;
+    max-height: 150px;
     width: 100%;
     border: none;
     outline: none;
     font-size: 0.85rem;
     resize: none;
-    padding: 10px 15px 10px 0;
+    padding: 15px 15px 15px 15px;
+    border-radius: 30px;
+    scrollbar-color: transparent transparent;
 }
 
-.chat-input input::placeholder {
+.chat-input textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-input textarea::placeholder {
     font-family: "Poppins", sans-serif;
     font-style: normal;
+    text-wrap: nowrap;
 }
 
 .chat-input #send-button {
-    align-self: flex-end;
     display: none;
     align-items: center;
-    height: 50px;
-    line-height: 50px;
-    color: var(--span-color);
-    font-size: 1.5rem;
+    justify-content: center;
+    min-height: 45px;
+    min-width: 45px;
+    color: var(--background-color1);
+    background-color: var(--span-color);
+    font-size: 1.5em;
     cursor: pointer;
+    border-radius: 50%;
     -webkit-tap-highlight-color: transparent;
 }
 
-.chat-input input:valid ~ #send-button {
+.chat-input textarea:valid ~ #send-button {
     display: flex;
 }
 
@@ -290,6 +375,20 @@ pre {
     -webkit-tap-highlight-color: transparent;
 }
 
-.chat-input input:valid ~ #paste-button {
+.chat-input textarea:valid ~ #paste-button {
     display: none;
+}
+
+#alert {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+    margin: 2px 0;
+    font-size: 0.60rem;
+    text-align: center;
+    color: #999;
+    text-wrap: nowrap;
 }
