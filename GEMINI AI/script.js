@@ -141,7 +141,7 @@ function divTiga() {
     }
 }
 function divEmpat() {
-    document.getElementById("message").value = "Buatlah resep unik yang menggabungkan [bahan] degan [bahan]. Pertimbangkan tekstur, rasa, dan tampilan hidangan."
+    document.getElementById("message").value = "Buatlah resep unik yang menggabungkan [bahan] dengan [bahan]. Pertimbangkan tekstur, rasa, dan tampilan hidangan."
     var height = textarea.scrollHeight;
     textarea.style.height = height + 'px';
     if (height > 60) {
