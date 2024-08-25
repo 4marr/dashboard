@@ -5,7 +5,7 @@ window.addEventListener('load', function() {
 });
 
 function back(){
-    window.open(".\dashboard\Playground\index.html")
+    window.open("/dashboard/Playground/index.html")
 }
 
 function faq() {
