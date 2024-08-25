@@ -58,7 +58,7 @@ const createChatLi = (message, className) => {
 
 let generateResponse = (incomingChatLi) => {
     const prompt = document.getElementById('message').value;
-    let apiUrl = `https://itzpire.com/ai/gemini-ai?q=${encodeURIComponent(prompt)}`;
+    let apiUrl = `https://api.sanzy.co/api/gemini?text=${encodeURIComponent(prompt)}`;
     let hasil = incomingChatLi.querySelector("p")
     chatInput.readOnly = true;
     chatInput.placeholder = 'Mohon tunggu...'
