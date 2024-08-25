@@ -58,7 +58,7 @@ const createChatLi = (message, className) => {
 
 let generateResponse = (incomingChatLi) => {
     const prompt = document.getElementById('message').value;
-    let apiUrl = `https://api.nyxs.pw/ai/gemini?text=${encodeURIComponent(prompt)}`;
+    let apiUrl = `https://itzpire.com/ai/gemini-ai?q=${encodeURIComponent(prompt)}`;
     let hasil = incomingChatLi.querySelector("p")
     chatInput.readOnly = true;
     chatInput.placeholder = 'Mohon tunggu...'
@@ -67,7 +67,7 @@ let generateResponse = (incomingChatLi) => {
     .then(response => response.json())
     .then(data => {
         if (data.status) {
-            hasil.innerHTML = data.result.replace(/\*\*/g, "");
+            hasil.innerHTML = data.result.replace(/\*\*/g, "<strong>");
         } else {
             hasil.textContent = 'Maaf, saya tidak mengerti apa yang Anda tanyakan. Bisakah Anda ulangi pertanyaan Anda?';
         }
