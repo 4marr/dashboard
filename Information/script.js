@@ -112,3 +112,26 @@ fetch(apiURL)
     portalBerita.append(li);
     }
 });
+
+const apiGempa = "https://itzpire.com/information/gempaWarning";
+fetch(apiGempa)
+.then((res) => {
+    return res.json();
+})
+.then((data) => {
+    console.log(data);
+    let container = document.getElementById("portalGempa");
+    let containGempa;
+
+    containGempa += `
+            <img src="${data.data.linkPeta}" alt="peta gempa" class="img_eel">
+						<div class="desc-gempa">
+							<p class="tanggal">${data.data.tanggal}</p>
+							<p class="magnitudo"><strong>${data.data.magnitudo} magnitudo. Kedalaman ${data.data.kedalaman}</strong></p>
+							<p class="wilayah"><strong>Wilayah yang merasakan:</strong> ${data.data.wilayahDirasakan}</p>
+							<p class="lokasi">${data.data.lokasi}</p>
+							<p class="arahan">${data.data.arahan}. ${data.data.saran}</p>
+						</div>
+    `
+    container.innerHTML = containGempa;
+});
