@@ -85,6 +85,12 @@ document
             // Download Button Event
 
             button.addEventListener("click", function (event) {
+              const urlParams = new URLSearchParams(window.location.search);
+              urlParams.append('anime', `${animeId}`);
+
+              // Untuk mendapatkan URL yang baru
+              const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+              console.log(newUrl);
               console.log(`Anime name: ${anime}`);
               console.log(`Anime ID: ${animeId}`);
               loader.style.display = "flex";
@@ -242,7 +248,7 @@ fetch(`${apiURL}genres`)
               let animeId = data.data.data[i].data;
               let genreAnime = data.data.data[i].genre;
               let ratingAnime = data.data.data[i].total_episode;
-  
+
               var li = document.createElement("li");
               li.classList.add("list-search");
               var divCover = document.createElement("div");
@@ -251,7 +257,7 @@ fetch(`${apiURL}genres`)
               img.classList.add("img-el-search");
               img.setAttribute("src", coverImg);
               divCover.append(img);
-  
+
               var divJudul = document.createElement("div");
               divJudul.classList.add("anime-info-search");
               var judulAnime = document.createElement("p");
@@ -267,36 +273,42 @@ fetch(`${apiURL}genres`)
               } else {
                 genreAnimeSearch.innerHTML = genreAnime;
               }
-  
+
               var ratingAnimeSearch = document.createElement("p");
               ratingAnimeSearch.classList.add("rating-anime-search");
               ratingAnimeSearch.innerHTML = ratingAnime;
               divJudul.append(judulAnime);
               divJudul.append(genreAnimeSearch);
               divJudul.append(ratingAnimeSearch);
-  
+
               var div1 = document.createElement("div");
               var button = document.createElement("button");
               button.classList.add("get-info");
-  
+
               div1.classList.add("get-info-anime");
               div1.append(button);
-  
+
               button.style.fontSize = "0px";
               button.append(i);
-  
+
               li.append(div1);
               li.append(divCover);
               li.append(divJudul);
               listContainerSearch.append(li);
-  
+
               // Download Button Event
-  
+
               button.addEventListener("click", function (event) {
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.append('anime', `${animeId}`);
+
+                // Untuk mendapatkan URL yang baru
+                const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+                console.log(newUrl);
                 console.log(`Anime name: ${anime}`);
                 console.log(`Anime ID: ${animeId}`);
                 loader.style.display = "flex";
-  
+
                 fetch(`${apiURL}info/?data=${animeId}`, {
                   headers: { accept: "application/json" },
                 })
@@ -331,7 +343,7 @@ fetch(`${apiURL}genres`)
                       let dataEpisode = data.data.data_episode[j].data;
                       let judulEpisodeAnime =
                         data.data.data_episode[j].judul_episode;
-  
+
                       var liEps = document.createElement("li");
                       liEps.classList.add("list-episode");
                       var divJudulEpisode = document.createElement("div");
@@ -339,19 +351,19 @@ fetch(`${apiURL}genres`)
                       var judulEpisode = document.createElement("p");
                       judulEpisode.classList.add("judul-episode");
                       judulEpisode.innerHTML = judulEpisodeAnime;
-  
+
                       var div2 = document.createElement("div");
                       var button2 = document.createElement("button");
                       button2.classList.add("data-info-episode");
-  
+
                       div2.classList.add("get-info-episode");
                       div2.append(button2);
-  
+
                       divJudulEpisode.append(button2);
                       divJudulEpisode.append(judulEpisode);
                       liEps.append(divJudulEpisode);
                       containerListEpisode.append(liEps);
-  
+
                       button2.addEventListener("click", function (e) {
                         loader.style.display = "flex";
                         fetch(`${apiURL}view/?data=${dataEpisode}`, {
@@ -390,7 +402,7 @@ fetch(`${apiURL}genres`)
       })
     }
   })
-  
+
 fetch(`${apiURL}ongoing`)
   .then((res) => {
     return res.json();
@@ -453,6 +465,12 @@ fetch(`${apiURL}ongoing`)
       // Download Button Event
 
       button.addEventListener("click", function (event) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.append('anime', `${animeId}`);
+
+        // Untuk mendapatkan URL yang baru
+        const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+        console.log(newUrl);
         console.log(`Anime name: ${anime}`);
         console.log(`Anime ID: ${animeId}`);
         loader.style.display = "flex";
@@ -603,6 +621,12 @@ fetch(`${apiURL}complete`)
       // Download Button Event
 
       button.addEventListener("click", function (event) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.append('anime', `${animeId}`);
+
+        // Untuk mendapatkan URL yang baru
+        const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+        console.log(newUrl);
         console.log(`Anime name: ${anime}`);
         console.log(`Anime ID: ${animeId}`);
         loader.style.display = "flex";
