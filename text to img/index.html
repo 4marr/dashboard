@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Image</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="contain-box">
+            <h2>ar.Visio</h2>
+            <p class="desc">Buat gambar AI dengan mudah</p>
+            <p style="font-weight: 600; font-size: 1.5rem;">Pilih Model</p>
+            <div class="list-model">
+                <button id="model1" class="model active">Anime</button>
+                <button id="model2" class="model">Realistic</button>
+            </div>
+            <textarea type="text" id="prompt" placeholder="ketikan prompt-nya disini..." required=""></textarea>
+            <p class="tips">tips: gunakan bahasa inggris untuk hasil yang lebih baik</p>
+            <div class="content-generate">
+                <div class="contain-generate-button">
+                    <button onclick="generateAnimeh()" id="generateAnime" class="generate tampil">Generate</button>
+                </div>
+                <div class="contain-generate-button">
+                    <button onclick="generateReal()" id="generateReal" class="generate">Generate</button>
+                </div>
+            </div>
+            <div id="container-image">
+
+            </div>
+            <div id="container-download">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
