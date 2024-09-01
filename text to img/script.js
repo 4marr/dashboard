@@ -77,10 +77,14 @@ function generateReal() {
             image += `
             <img src="${imageURL}" alt="gambar">
             `;
+            download += `
+            <a href="${imageURL}" download="gambar-ai.jpg">Download</a>
+            `;
             console.log(imageURL);
             console.log(prompt);
 
             document.getElementById("container-image").innerHTML = image;
+            document.getElementById("container-download").innerHTML = download;
         } catch (error) {
             console.error('Error:', error);
         } finally {
