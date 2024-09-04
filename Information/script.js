@@ -121,7 +121,7 @@ fetch(apiGempa)
 .then((data) => {
     console.log(data);
     let container = document.getElementById("portalGempa");
-    let containGempa;
+    let containGempa = "";
 
     containGempa += `
             <img src="${data.data.linkPeta}" alt="peta gempa" class="img_eel">
