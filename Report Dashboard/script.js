@@ -84,5 +84,5 @@ function send(){
 }
 
 function back() {
-  window.open("Ammar\Report Dashboard\index.html")
+  window.refresh()
 }
