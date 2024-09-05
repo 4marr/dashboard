@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
 });
 
 var api = "https://api.alif.my.id/alquran";
-var surahAPI = "https://api.quran.gading.dev/surah/"
+var surahAPI = "https://api.quran.gading.dev/surah/";
 
 fetch(api)
   .then((res) => {
@@ -118,6 +118,7 @@ fetch(api)
             var divJudul = document.getElementById("div-judul");
             var divControls = document.getElementById("div-controls");
             var divBismillah = document.getElementById("div-bismillah");
+            document.getElementById("judul-surat-header").innerHTML = nama_surat
             divJudul.innerHTML = `
             <div class="surats-info-lanjutan">
               <p class="nama-surat">Surah ${nama_surat}</p>
