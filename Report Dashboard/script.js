@@ -84,5 +84,5 @@ function send(){
 }
 
 function back() {
-  window.refresh()
+  window.location.reload();
 }
