@@ -18,5 +18,5 @@ function send(){
     document.querySelector(".done").style.display = "flex";
 }
 function back() {
-    window.location.reload()
+    window.location.reload();
 }
