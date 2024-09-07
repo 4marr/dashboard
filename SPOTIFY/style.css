@@ -19,7 +19,7 @@ h2 {
 }
 
 p {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .flex {
@@ -207,22 +207,22 @@ p {
   color: #ffffff;
 }
 .list-container > .list > .imgEl {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
 }
 .list-container > .list > .songInfo {
   margin-left: 10px;
   margin-top: 2px;
   flex-wrap: nowrap;
   max-width: 75%;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   color: #ccc;
 }
 .list-container > .list > .songInfo > .songName {
   overflow-x: scroll;
   overflow-y: none;
   max-width: 60%;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: #ffffff;
 }
 
