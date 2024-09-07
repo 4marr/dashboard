@@ -189,9 +189,9 @@ function fetchPlaylist() {
         
         for (var i = 0; i < data.length; i++) {
           let song = data;
-          let songs = data[i].album;
+          let songs = data[i].title;
           let songId = data[i].id;
-          let artistName = data[i].artists;
+          let artistName = data[i].artist;
           let albumImg = data[i].thumbnail;
           
           var li = document.createElement("li");
