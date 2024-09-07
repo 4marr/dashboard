@@ -187,7 +187,7 @@ function fetchPlaylist() {
         delButton.style.display = "block";
         document.getElementById("playlistTop").style.display = "none";
         
-        for (var i = 0; i < data.data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
           let song = data;
           let songs = data[i].album;
           let songId = data[i].id;
