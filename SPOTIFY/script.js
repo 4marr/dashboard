@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
 
 var api = "https://itzpire.com/download/spotify";
 var apiData = "https://api.mininxd.my.id/spotify";
-var searchApi = "https://itzpire.com/search/spotify"
+var searchApi = "https://spotifyapi.caliphdev.com/api/search/tracks"
 
 function fetchPlaylist() {
   var getURL = document.getElementById("url").value;
@@ -173,7 +173,7 @@ function fetchPlaylist() {
         getRL.readOnly = false;
       });
     } else {
-      fetch(`${searchApi}?query=${getURL}`)
+      fetch(`${searchApi}?q=${getURL}`)
       .then((res) => {
         return res.json();
       })
