@@ -188,11 +188,11 @@ function fetchPlaylist() {
         document.getElementById("playlistTop").style.display = "none";
         
         for (var i = 0; i < data.data.length; i++) {
-          let song = data.data;
-          let songs = data.data[i].album.name;
-          let songId = data.data[i].id;
-          let artistName = data.data[i].artists[0].name;
-          let albumImg = data.data[i].album.images[1].url;
+          let song = data;
+          let songs = data[i].album;
+          let songId = data[i].id;
+          let artistName = data[i].artists;
+          let albumImg = data[i].thumbnail;
           
           var li = document.createElement("li");
           li.classList.add("list");
