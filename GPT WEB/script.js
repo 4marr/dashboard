@@ -65,7 +65,7 @@ let generateResponse = (incomingChatLi) => {
     .then(data => {
         console.log(data)
         if (data.status) {
-            hasil.textContent = data.result;
+            hasil.textContent = decodeURIComponent(data.result);
         } else {
             hasil.textContent = 'Maaf, saya tidak mengerti apa yang Anda tanyakan. Bisakah Anda ulangi pertanyaan Anda?';
         }
