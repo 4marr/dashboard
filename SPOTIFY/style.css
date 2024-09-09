@@ -207,8 +207,8 @@ p {
   color: #ffffff;
 }
 .list-container > .list > .imgEl {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
 }
 .list-container > .list > .songInfo {
   margin-left: 10px;
