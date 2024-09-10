@@ -75,7 +75,7 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-const apiURL = `https://counterpro.vercel.app/api/count/?id=aduyhaiuqwjyywgqbhqgwatgedajezxa`
+const apiURL = `https://counterpro.vercel.app/api/count/?id=66`
 
 fetch(apiURL)
 .then((res) => {
