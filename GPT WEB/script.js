@@ -54,7 +54,7 @@ const randomString = generateRandomString(16);
 const chatId = randomString + Math.floor(Math.random() * 100000) + 1;
 let generateResponse = (incomingChatLi) => {
     const prompt = document.getElementById('message').value;
-    let apiUrl = `https://api.nyxs.pw/ai/gpt4o?text=${encodeURIComponent(prompt)}`;
+    let apiUrl = `https://api.nyxs.pw/ai/gpt4?text=${encodeURIComponent(prompt)}`;
     console.log(apiUrl)
     let hasil = incomingChatLi.querySelector("p")
     chatInput.readOnly = true;
