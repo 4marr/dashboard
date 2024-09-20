@@ -1,6 +1,6 @@
 async function searchVideo() {
     const downloadButton = document.querySelector('button');
-    downloadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+    downloadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>  Searching...';
 
     try {
         function generateRandomString(length) {
@@ -28,7 +28,7 @@ async function searchVideo() {
 
         const ig = `https://api.ryzendesu.vip/api/downloader/igdl?url=${encodeURIComponent(url)}`;
         const tt = `https://api.nyxs.pw/dl/tiktok?url=${encodeURIComponent(url)}`;
-        const yt = `https://api.ryzendesu.vip/api/downloader/ytdl?url=${encodeURIComponent(url)}`;
+        const yt = `https://api.nyxs.pw/dl/yt-direct?url=${encodeURIComponent(url)}`;
         const searchYt = `https://itzpire.com/search/youtube?query=${encodeURIComponent(url)}`;
         const fb = `https://api.ryzendesu.vip/api/downloader/fbdl?url=${encodeURIComponent(url)}`;
 
@@ -65,8 +65,10 @@ async function searchVideo() {
             data = await response.json();
 
             downloadLinks += `
-            <a href="${data.videoUrl}" target="_blank" download>Download Video</a>
-            <a href="${data.audioUrl}" target="_blank" download>Download Music Audio</a>
+            <img src="${data.result.thumbnail}" alt="thumbnail" />
+            <p>${data.result.title}</p>
+            <a href="${data.result.urlVideo}" target="_blank" download="${data.title}">Download Video</a>
+            <a href="${data.result.urlAudio}" target="_blank" download>Download Music Audio</a>
         `;
         } else if (/(reel|fb|facebook\.com|fb\.watch)/i.test(url)) {
             response = await fetch(fb);
@@ -92,7 +94,7 @@ async function searchVideo() {
         if (error.message === 'Unsupported URL!, Hanya support fb/ig/tt/yt') {
             alert("Unsupported URL!, Hanya support fb/ig/tt/yt");
         } else {
-            document.getElementById('downloadLinks').innerHTML = `<p style="color: #ff0000;">Terjadi Error, pastikan link yg ingin di download bukanlah private</p>`;
+            document.getElementById('downloadLinks').innerHTML = `<p style="color: #ff0000;">Terjadi Error, pastikan link yg ingin di download bukanlah private atau coba lagi nanti.</p>`;
         }
         console.log(error.message);
     } finally {
