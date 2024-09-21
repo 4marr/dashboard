@@ -56,6 +56,7 @@ async function searchVideo() {
                 downloadLinks += `
                     <p>${data.result.desc}</p>
                     <a href="${data.result.video}" target="_blank" download>Download Video</a>
+                    <a href="${data.result.videoHD}" target="_blank" download>Download Video HD</a>
                     <a href="${data.result.videoWatermark}" target="_blank" download>Download Video With Watermark</a>
                     <a href="${data.result.music}" target="_blank" download>Download Music Audio</a>
                 `;
