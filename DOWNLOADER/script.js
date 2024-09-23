@@ -1,6 +1,6 @@
 async function searchVideo() {
     const downloadButton = document.querySelector('button');
-    downloadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>  Searching...';
+    downloadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> &nbsp Searching...';
 
     try {
         function generateRandomString(length) {
@@ -19,7 +19,7 @@ async function searchVideo() {
             return;
         }
         const youtubeRegex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/;
-        const supportedUrls = ['instagram.com', 'tiktok.com', 'youtube.com', 'youtu.be', 'facebook.com', 'fb.watch', 'reel'];
+        const supportedUrls = ['instagram.com', 'tiktok.com', 'youtube.com', 'youtu.be', 'facebook.com', 'fb.watch', 'reel', 'x.com', 'twitter.com'];
 
         // if (!supportedUrls.some(supportedUrl => url.includes(supportedUrl)) && !youtubeRegex.test(url)) {
         //     alert('Unsupported URL!, Hanya support fb/ig/tt/yt');
@@ -29,8 +29,9 @@ async function searchVideo() {
         const ig = `https://api.ryzendesu.vip/api/downloader/igdl?url=${encodeURIComponent(url)}`;
         const tt = `https://api.nyxs.pw/dl/tiktok?url=${encodeURIComponent(url)}`;
         const yt = `https://api.nyxs.pw/dl/yt-direct?url=${encodeURIComponent(url)}`;
-        const searchYt = `https://itzpire.com/search/youtube?query=${encodeURIComponent(url)}`;
+        const twit = `https://api.ryzendesu.vip/api/downloader/twitter?url=${encodeURIComponent(url)}`
         const fb = `https://api.ryzendesu.vip/api/downloader/fbdl?url=${encodeURIComponent(url)}`;
+        const searchYt = `https://itzpire.com/search/youtube?query=${encodeURIComponent(url)}`;
 
         let response, data;
         let downloadLinks = '';  // Initialize downloadLinks
@@ -80,6 +81,19 @@ async function searchVideo() {
                 downloadLinks += `<a href="${item.url}" download>Download Video ${item.resolution}</a>`;
             });
         
+        } else if (url.includes('x.com') || url.includes('twitter.com')){
+            response = await fetch(twit);
+            data = await response.json();
+
+            if (data.type === 'image') {
+                data.media.forEach((imageUrl, index) => {
+                    downloadLinks += `<a href="${imageUrl}" download>Download Image ${index + 1}</a>`;
+                });
+            } else {
+                data.media.forEach((videoUrl, index) => {
+                    downloadLinks += `<a href="${videoUrl.url}" download>Download video quality ${videoUrl.quality}p</a>`;
+                });
+            }
         } else {
             response = await fetch(searchYt);
             data = await response.json();
