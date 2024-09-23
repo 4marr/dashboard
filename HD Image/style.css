@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 20px 10px;
+}
+
+img {
+    width: 80%;
+}
+
+input {
+    margin-right: .5em;
+    padding: .5em
+}
+
+button {
+    display: none;
+    margin: 20px 0;
+    padding: .5em
+}
