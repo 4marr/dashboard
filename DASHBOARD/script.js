@@ -86,3 +86,13 @@ fetch(apiURL)
 	console.log(data)
 	document.getElementById("countVisitors").innerHTML = data
 })
+
+function Time() {
+	let jam = new Date().getHours();
+	let menit = new Date().getMinutes();
+	let detik = new Date().getSeconds();
+	let gabungan = `${jam}:${menit}:${detik}`
+	document.getElementById("time").innerHTML = gabungan;
+}
+
+setInterval(Time, 1)
