@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arnime</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <l-ring
+    size="40"
+    stroke="5"
+    bg-opacity="0.05"
+    speed="2"
+    color="black" 
+    id="loader"
+    ></l-ring>
+    <header>
+        <div class="brand">
+            <h2>ar<span>nime</span></h2>
+        </div>
+    </header>
+    <div id="container-search">
+        <h2 id="header-result">results</h2>
+        <div id="container-search-anime">
+            <ul id="listContainerSearch" class="list-container">
+            </ul>
+        </div>
+    </div>
+    <div id="cover-ads">
+        
+    </div>
+    <div id="container-genre" class="container">
+        <ul id="listGenreAnime" class="list-container">
+        </ul>
+    </div>
+    <div class="container">
+        <div id="container-anime">
+    
+        </div>
+        <div id="container-stream">
+            
+        </div>
+        <ul id="containerListEpisode">
+            
+        </ul>
+    </div>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
+    <script>
+        const apiURL = "https://latipharkat-api.my.id/api/otakudesu/";
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataEpisode = urlParams.get('anime-episode');
+        fetch(`${apiURL}view/?data=${dataEpisode}`, {
+                            headers: { accept: "application/json" },
+                        })
+                            .then((res) => {
+                                return res.json();
+                            })
+                            .then((data) => {
+                                console.log(data);
+                                loader.style.display = "none";
+                                data = data;
+                                document.getElementById("container-anime").innerHTML = "";
+                                let containerStream =
+                                    document.getElementById("container-stream");
+                                containerStream.innerHTML = `
+                <div class="stream-info">
+                  <iframe src="${data.data.stream}" frameborder="0" allowfullscreen></iframe>
+                  <div class="more-info">
+                    <h2>${data.data.judul_episode}</h2>
+                    <P> Tips : Saat pertama kali anda menonton anime, anda akan melihat iklan judi online, anda bisa langsung menekean tombol close atau jika anda lansung memasuki link judi online tersebut anda bisa menekan tombol kembali pada handphone anda. Mohon maaf atas kendala iklannya karena itu berasal dari server otakudesu itu sendiri, saya tidak punya kendalin atas hal itu. Website ini TIDAK DAN TIDAK AKAN PERNAH mensponsori judi online manapun! <br> Selamat menonton~</p> 
+                  </div>
+                </div>
+                `;
+                            });
+    </script>
+</body>
+</html>

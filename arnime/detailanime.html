@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <l-ring
+    size="40"
+    stroke="5"
+    bg-opacity="0.05"
+    speed="2"
+    color="black" 
+    id="loader"
+    ></l-ring>
+    <header>
+        <div class="brand">
+            <h2>ar<span>nime</span></h2>
+        </div>
+    </header>
+    <div class="container">
+        <div class="list-anime" id="list-anime"></div>
+
+            <div id="container-ongoing">
+                <ul id="listContainerOngoing" class="list-container">
+                </ul>
+            </div>
+
+            <div id="container-complete">
+                <ul id="listContainerComplete" class="list-container">
+                </ul>
+            </div>
+        <div id="container-anime">
+
+        </div>
+        <div id="container-stream">
+
+        </div>
+        <ul id="containerListEpisode">
+
+        </ul>
+    </div>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
+    <script>
+        const apiURL = "https://latipharkat-api.my.id/api/otakudesu/";
+        const urlParams = new URLSearchParams(window.location.search);
+        const animeId = urlParams.get('anime');
+        fetch(`${apiURL}info/?data=${animeId}`, {
+            headers: { accept: "application/json" },
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                data = data;
+                document.getElementById("list-anime").innerHTML = "";
+                loader.style.display = "none";
+                let containerAnime = document.getElementById("container-anime");
+                containerAnime.innerHTML = `
+                <div class="cover-info">
+                  <img src="${data.data.cover}" alt="${data.data.cover}" id="cover">
+                  <div class="more-info">
+                    <h2>${data.data.judul}(${data.data.japanese})</h2>
+                    <p>Genres : ${data.data.genre}</p>
+                    <p>Producer : ${data.data.produser}</p>
+                    <p>Studio : ${data.data.studio}</p>
+                    <p>Score : ${data.data.skor}</p>
+                    <p>Duration : ${data.data.durasi}</p>
+                  </div>
+                </div>
+                ${data.data.sinopsis}
+                
+                `;
+                for (var j = 0; j < data.data.data_episode.length; j++) {
+                    let dataEpisode = data.data.data_episode[j].data;
+                    let judulEpisodeAnime = data.data.data_episode[j].judul_episode;
+
+                    var liEps = document.createElement("li");
+                    liEps.classList.add("list-episode");
+                    var divJudulEpisode = document.createElement("div");
+                    divJudulEpisode.classList.add("div-judul-episode");
+                    var judulEpisode = document.createElement("p");
+                    judulEpisode.classList.add("judul-episode");
+                    judulEpisode.innerHTML = judulEpisodeAnime;
+
+                    var div2 = document.createElement("div");
+                    var button2 = document.createElement("button");
+                    button2.classList.add("data-info-episode");
+
+                    div2.classList.add("get-info-episode");
+                    div2.append(button2);
+
+                    divJudulEpisode.append(button2);
+                    divJudulEpisode.append(judulEpisode);
+                    liEps.append(divJudulEpisode);
+                    containerListEpisode.append(liEps);
+
+                    button2.addEventListener("click", function (e) {
+                        window.location.href = `detailepisode.html?anime-episode=${dataEpisode}`
+                        loader.style.display = "flex";
+                    });
+                }
+            });
+    </script>
+</body>
+
+</html>

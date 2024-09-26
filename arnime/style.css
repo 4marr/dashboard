@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --background-color1: #121212;
-    --background-input: #262626;
-    --text-color: #FFFFFF;
-    --text-color-client: #FFFFFF;
+    --background-color1: #F8F9FA;
+    --background-input: #E5E5E5;
+    --text-color: #121221;
+    --text-color-client: #000000;
     --span-color: #74AA9C;
 }
 
@@ -23,43 +23,21 @@ body{
     font-style: normal;
 }
 
-#loader {
+l-ring {
     position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #fff;
+    z-index: 100;
     width: 100%;
-    height: 100vh;
-    z-index: 101;
-    background-color: #121212;
-}
-#loader:after {
-    content: " ";
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border: 6px solid white;
-    border-color: white transparent white transparent;
-    animation: searah 1.2s linear infinite;
+    height: 100%;
 }
 
-@keyframes searah {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
 
 p{
     font-size: 0.80rem;
 }
 
 a {
-    color: #FFFFFF;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -78,6 +56,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 12px 0.30rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 header h2 {
@@ -105,8 +84,8 @@ input{
     border: none;
     border-radius: 2px;
     outline: none;
-    color: #FFFFFF;
-    background-color: #303030;
+    color: #000;
+    background-color: var(--background-input);
     padding: 10px;
 }
 
@@ -130,11 +109,12 @@ input{
 }
 
 .list-genre {
-    margin: 0 0.30rem  0 0;
+    margin: 0.50rem 0.50rem  0.50rem 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .div-genre-anime {
-    background: #303030;
+    background: #fff;
     border-radius: 5px;
     padding: 0.30rem;
     width: 100%;
@@ -160,7 +140,7 @@ ul{
 
 li{
     list-style: none;
-    margin: 0 0.30rem  0 0;
+    margin: 0 0.50rem  0 0;
     position: relative;
 }
 
@@ -261,7 +241,8 @@ li button {
 }
 
 .list-episode {
-    background: #303030;
+    background: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
@@ -273,28 +254,12 @@ li button {
 
 iframe {
     width: 100%;
-    height: 400px;
+    height: 200%;
     object-fit: cover;
 }
 
 .stream-info h2 {
     margin: 10px 0 ;
-}
-
-footer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-footer button {
-    color: #FFFFFF;
-    margin-bottom: 20px;
-    background: none;
-    border: none;
-    outline: none;
-    text-decoration: underline;
 }
 
 button {

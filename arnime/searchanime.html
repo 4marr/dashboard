@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arnime</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <l-ring
+    size="40"
+    stroke="5"
+    bg-opacity="0.05"
+    speed="2"
+    color="black" 
+    id="loader"
+    ></l-ring>
+    <header>
+        <div class="brand">
+            <h2>ar<span>nime</span></h2>
+        </div>
+    </header>
+    <div id="container-search">
+        <div id="search-input-value">
+            <input type="search" name="search-anime" id="search-anime" placeholder="Search Anime..">
+        </div>
+        <h2 id="header-result">results</h2>
+        <div id="container-search-anime">
+            <ul id="listContainerSearch" class="list-container">
+            </ul>
+        </div>
+    </div>
+    <div id="cover-ads">
+        
+    </div>
+    <div id="container-genre" class="container">
+        <ul id="listGenreAnime" class="list-container">
+        </ul>
+    </div>
+    <div class="container">
+        <div class="list-anime" id="list-anime">
+            <h2>Anime Ongoing</h2>
+            <div id="container-ongoing">
+                <ul id="listContainerOngoing" class="list-container">
+                </ul>
+            </div>
+            <h2>Anime Complete</h2>
+            <div id="container-complete">
+                <ul id="listContainerComplete" class="list-container">
+                </ul>
+            </div>
+            <div class="genre">
+
+            </div>
+        </div>
+        <div id="container-anime">
+
+        </div>
+        <div id="container-stream">
+
+        </div>
+        <ul id="containerListEpisode">
+
+        </ul>
+    </div>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
+    <script>
+        const apiURL = "https://latipharkat-api.my.id/api/otakudesu/";
+        const urlParams = new URLSearchParams(window.location.search);
+        const keyword = urlParams.get('anime-search');
+        fetch(`${apiURL}search/?keyword=${encodeURIComponent(keyword)}`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                console.log(keyword);
+                document.getElementById("list-anime").style.display = "none";
+                loader.style.display = "none";
+                for (var i = 0; i < data.data.data.length; i++) {
+                    let coverImg = data.data.data[i].cover;
+                    let anime = data.data.data[i].judul;
+                    let animeId = data.data.data[i].data;
+                    let genreAnime = data.data.data[i].genres;
+                    let ratingAnime = data.data.data[i].rating;
+
+                    var li = document.createElement("li");
+                    li.classList.add("list-search");
+                    var divCover = document.createElement("div");
+                    divCover.classList.add("cover-search");
+                    var img = document.createElement("img");
+                    img.classList.add("img-el-search");
+                    img.setAttribute("src", coverImg);
+                    divCover.append(img);
+
+                    var divJudul = document.createElement("div");
+                    divJudul.classList.add("anime-info-search");
+                    var judulAnime = document.createElement("p");
+                    judulAnime.innerHTML = anime;
+                    judulAnime.classList.add("judul-anime-search");
+                    var genreAnimeSearch = document.createElement("p");
+                    genreAnimeSearch.classList.add("genre-anime-search");
+                    const maxLength = 35; // Batas jumlah karakter
+                    if (genreAnime.length > maxLength) {
+                        let truncatedText =
+                            genreAnime.substring(0, maxLength - 1) + "...";
+                        genreAnimeSearch.innerText = truncatedText;
+                    } else {
+                        genreAnimeSearch.innerHTML = genreAnime;
+                    }
+
+                    var ratingAnimeSearch = document.createElement("p");
+                    ratingAnimeSearch.classList.add("rating-anime-search");
+                    ratingAnimeSearch.innerHTML = ratingAnime;
+                    divJudul.append(judulAnime);
+                    divJudul.append(genreAnimeSearch);
+                    divJudul.append(ratingAnimeSearch);
+
+                    var div1 = document.createElement("div");
+                    var button = document.createElement("button");
+                    button.classList.add("get-info");
+
+                    div1.classList.add("get-info-anime");
+                    div1.append(button);
+
+                    button.style.fontSize = "0px";
+                    button.append(i);
+
+                    li.append(div1);
+                    li.append(divCover);
+                    li.append(divJudul);
+                    listContainerSearch.append(li);
+
+                    // Download Button Event
+
+                    button.addEventListener("click", function (event) {
+                        window.location.href = `detailanime.html?anime=${animeId}`
+                        console.log(`Anime name: ${anime}`);
+                        console.log(`Anime ID: ${animeId}`);
+                        loader.style.display = "flex";
+                    });
+                }
+            });
+    </script>
+</body>
+
+</html>
