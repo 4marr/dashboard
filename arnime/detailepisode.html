@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>arnime</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <l-ring
-    size="40"
-    stroke="5"
-    bg-opacity="0.05"
-    speed="2"
-    color="black" 
-    id="loader"
-    ></l-ring>
+    <l-ring size="40" stroke="5" bg-opacity="0.05" speed="2" color="black" id="loader"></l-ring>
     <header>
         <div class="brand">
             <h2>ar<span>nime</span></h2>
@@ -28,7 +23,7 @@
         </div>
     </div>
     <div id="cover-ads">
-        
+
     </div>
     <div id="container-genre" class="container">
         <ul id="listGenreAnime" class="list-container">
@@ -36,34 +31,40 @@
     </div>
     <div class="container">
         <div id="container-anime">
-    
+
         </div>
         <div id="container-stream">
-            
+
         </div>
         <ul id="containerListEpisode">
-            
+
         </ul>
     </div>
     <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
     <script>
+        var loader = document.getElementById("loader");
+        var loadingAnime = document.getElementById("listContainerComplete");
+
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        });
         const apiURL = "https://latipharkat-api.my.id/api/otakudesu/";
         const urlParams = new URLSearchParams(window.location.search);
         const dataEpisode = urlParams.get('anime-episode');
         fetch(`${apiURL}view/?data=${dataEpisode}`, {
-                            headers: { accept: "application/json" },
-                        })
-                            .then((res) => {
-                                return res.json();
-                            })
-                            .then((data) => {
-                                console.log(data);
-                                loader.style.display = "none";
-                                data = data;
-                                document.getElementById("container-anime").innerHTML = "";
-                                let containerStream =
-                                    document.getElementById("container-stream");
-                                containerStream.innerHTML = `
+            headers: { accept: "application/json" },
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                loader.style.display = "none";
+                data = data;
+                document.getElementById("container-anime").innerHTML = "";
+                let containerStream =
+                    document.getElementById("container-stream");
+                containerStream.innerHTML = `
                 <div class="stream-info">
                   <iframe src="${data.data.stream}" frameborder="0" allowfullscreen></iframe>
                   <div class="more-info">
@@ -72,7 +73,8 @@
                   </div>
                 </div>
                 `;
-                            });
+            });
     </script>
 </body>
+
 </html>

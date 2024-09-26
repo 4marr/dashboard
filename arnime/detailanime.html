@@ -9,14 +9,7 @@
 </head>
 
 <body>
-    <l-ring
-    size="40"
-    stroke="5"
-    bg-opacity="0.05"
-    speed="2"
-    color="black" 
-    id="loader"
-    ></l-ring>
+    <l-ring size="40" stroke="5" bg-opacity="0.05" speed="2" color="black" id="loader"></l-ring>
     <header>
         <div class="brand">
             <h2>ar<span>nime</span></h2>
@@ -25,15 +18,15 @@
     <div class="container">
         <div class="list-anime" id="list-anime"></div>
 
-            <div id="container-ongoing">
-                <ul id="listContainerOngoing" class="list-container">
-                </ul>
-            </div>
+        <div id="container-ongoing">
+            <ul id="listContainerOngoing" class="list-container">
+            </ul>
+        </div>
 
-            <div id="container-complete">
-                <ul id="listContainerComplete" class="list-container">
-                </ul>
-            </div>
+        <div id="container-complete">
+            <ul id="listContainerComplete" class="list-container">
+            </ul>
+        </div>
         <div id="container-anime">
 
         </div>
@@ -46,6 +39,12 @@
     </div>
     <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
     <script>
+        var loader = document.getElementById("loader");
+        var loadingAnime = document.getElementById("listContainerComplete");
+
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        });
         const apiURL = "https://latipharkat-api.my.id/api/otakudesu/";
         const urlParams = new URLSearchParams(window.location.search);
         const animeId = urlParams.get('anime');
