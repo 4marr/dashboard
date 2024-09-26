@@ -166,7 +166,7 @@ document
                         const newPath = window.location.pathname + '?' + searchParams.toString();
                         history.pushState(null, "", newPath)
                       }
-                      addURL('anime', `${dataEpisode}`)
+                      addURL('anime-eps', `${dataEpisode}`)
                       loader.style.display = "flex";
                       fetch(`${apiURL}view/?data=${dataEpisode}`, {
                         headers: { accept: "application/json" },
@@ -397,7 +397,7 @@ fetch(`${apiURL}genres`)
                           const newPath = window.location.pathname + '?' + searchParams.toString();
                           history.pushState(null, "", newPath)
                         }
-                        addURL('anime', `${dataEpisode}`);
+                        addURL('anime-eps', `${dataEpisode}`);
 
                         loader.style.display = "flex";
                         fetch(`${apiURL}view/?data=${dataEpisode}`, {
@@ -570,7 +570,7 @@ fetch(`${apiURL}ongoing`)
                   const newPath = window.location.pathname + '?' + searchParams.toString();
                   history.pushState(null, "", newPath)
                 }
-                addURL('anime', `${dataEpisode}`);
+                addURL('anime-eps', `${dataEpisode}`);
 
                 loader.style.display = "flex";
                 fetch(`${apiURL}view/?data=${dataEpisode}`, {
@@ -736,7 +736,7 @@ fetch(`${apiURL}complete`)
                   const newPath = window.location.pathname + '?' + searchParams.toString();
                   history.pushState(null, "", newPath)
                 }
-                addURL('anime', `${dataEpisode}`);
+                addURL('anime-eps', `${dataEpisode}`);
 
                 loader.style.display = "flex";
                 fetch(`${apiURL}view/?data=${dataEpisode}`, {
