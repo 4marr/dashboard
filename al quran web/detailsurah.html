@@ -35,6 +35,11 @@
 
   </ul>
   <script>
+    var loader = document.getElementById("loader");
+
+    window.addEventListener("load", function () {
+      loader.style.display = "none";
+    });
     var api = "https://api.alif.my.id/alquran";
     var surahAPI = "https://api.quran.gading.dev/surah/";
     const urlParams = new URLSearchParams(window.location.search);
@@ -114,7 +119,7 @@
             </li>`;
         });
         document.getElementById('listContainerSurah').innerHTML = ContainerAyat;
-      } catch(error) {
+      } catch (error) {
         console.log(error)
       } finally {
         console.log("sukses")
@@ -124,7 +129,7 @@
     }
     fetchData();
     function refresh() {
-      window.location.href =  "index.html"
+      window.location.href = "index.html"
     }
   </script>
 </body>
