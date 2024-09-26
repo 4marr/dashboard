@@ -94,7 +94,6 @@ fetch(api)
 
       button.addEventListener("click", function (event) {
         window.location.href = `detailsurah.html?surah=${suratsId}`
-        loader.style.display = "flex";
       });
     }
   });

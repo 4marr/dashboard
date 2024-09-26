@@ -13,7 +13,6 @@ document
     let value = document.getElementById("search-anime").value;
     if (event.key === "Enter") {
           window.location.href = `searchanime.html?anime-search=${value}`
-          loader.style.display = "flex";
       
     }
   });
@@ -58,7 +57,6 @@ fetch(`${apiURL}genres`)
         window.location.href = `animegenres.html?anime-genres=${genreId}`
         console.log(`Anime name: ${anime}`);
         console.log(`Anime ID: ${animeId}`);
-        loader.style.display = "flex";
       });
     }
   })
@@ -128,7 +126,6 @@ fetch(`${apiURL}ongoing`)
         window.location.href = `detailanime.html?anime=${animeId}`
         console.log(`Anime name: ${anime}`);
         console.log(`Anime ID: ${animeId}`);
-        loader.style.display = "flex";
       });
     }
   });
@@ -198,7 +195,6 @@ fetch(`${apiURL}complete`)
         window.location.href = `detailanime.html?anime=${animeId}`
         console.log(`Anime name: ${anime}`);
         console.log(`Anime ID: ${animeId}`);
-        loader.style.display = "flex";
       });
     }
   });
