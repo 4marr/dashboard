@@ -54,7 +54,7 @@ const randomString = generateRandomString(16);
 const chatId = randomString + Math.floor(Math.random() * 100000) + 1;
 let generateResponse = (incomingChatLi) => {
     const prompt = document.getElementById('message').value;
-    let apiUrl = `https://api.nyxs.pw/ai/gpt4?text=${encodeURIComponent(prompt)}`;
+    let apiUrl = `https://api.nyxs.pw/ai/gpt4o?text=${encodeURIComponent(prompt)}&system=jawab%20sebagai%20asisten%20yg%20supportif,%20dan%20juga%20kamu%20adalah%20pribadi%20yg%20menyenangkan`;
     console.log(apiUrl)
     let hasil = incomingChatLi.querySelector("p")
     chatInput.readOnly = true;
