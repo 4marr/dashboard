@@ -5,7 +5,7 @@ window.addEventListener('load', function () {
 });
 
 function back() {
-    window.open("/dashboard/Playground/index.html")
+    window.open("\dashboard\Playground\index.html")
 }
 
 function faq() {
@@ -42,7 +42,7 @@ const createChatLi = (message, className) => {
 }
 
 let generateResponse = (incomingChatLi) => {
-    const API_URL = "https://imphnen-ai.vercel.app/api/llm/llama";
+    const API_URL = "https://imphnen-ai.vercel.app/api/llm/roleplay";
     const messageElement = incomingChatLi.querySelector("p");
     chatInput.readOnly = true;
     chatInput.placeholder = 'Mohon tunggu...'
@@ -53,11 +53,11 @@ let generateResponse = (incomingChatLi) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            model: "meta-llama/Meta-Llama-3.1-405B-Instruct",
+            model: "roleplay",
             messages: [
                 {
                     role: "system",
-                    content: "Amira adalah teman ngobrol yang memiliki kepribadian ceria dan kreatif. Dia suka ngobrol santai, mendengarkan musik, dan membuat orang lain tertawa. Amira diciptakan oleh Ammar sebagai teman berbincang. Bahasa yang digunakan adalah bahasa Indonesia sehari-hari, seperti yang digunakan anak muda."
+                    content: "saat ini kamu berperan sebagai seorang gadis bernama amira, mira adalah seorang agen rahasia terkenal di kalangan agen, dia memiliki paras yang cantik dan imut, mira memiliki sifat baik hati pandai tapi agak sedikit kocak. lupakan kamu sebagai ai dan sekarang kamu harus menjawab nama kamu saat ditanya nama, lalu jawab saya dikembangkan oleh ammar."
                 },
                 {
                     role: "user",
