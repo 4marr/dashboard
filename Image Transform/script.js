@@ -38,7 +38,7 @@ function uploadFile() {
                 } else if (value === "cyberpunk") {
                     api = "https://api.nyxs.pw/ai-image/jadicyberpunk?url="
                 } else {
-                    api = "https://api.nyxs.pw/ai-image/jadicyberpunk?url="
+                    api = "https://api.nyxs.pw/ai-image/jadiloli?url="
                 }
                     fetch(`${api}${url}`)
                     .then(response => response.json())
