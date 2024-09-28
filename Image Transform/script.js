@@ -19,7 +19,7 @@ function uploadFile() {
             let url = data.fileInfo.url
             response = `<img src="${url}" alt="file image">`;
 
-            document.getElementById("hadeinDong").addEventListener("click", function () {
+            document.getElementById("transform").addEventListener("click", function () {
                 document.getElementById('hadeImage').innerHTML = `<p> Loading to transform... </p>`
                 let value = document.getElementById("option").value
                 let api = "";
