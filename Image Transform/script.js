@@ -20,11 +20,30 @@ function uploadFile() {
             response = `<img src="${url}" alt="file image">`;
 
             document.getElementById("hadeinDong").addEventListener("click", function () {
-                document.getElementById('hadeImage').innerHTML = `<p> Loading lagi ngehadein bang... </p>`
-                fetch(`https://api.ryzendesu.vip/api/ai/remini?url=${url}&method=Enhance`)
-                    .then(response => response.blob())
+                document.getElementById('hadeImage').innerHTML = `<p> Loading to transform... </p>`
+                let value = document.getElementById("option").value
+                let api = "";
+                if (value === "disney") {
+                    api = "https://api.nyxs.pw/ai-image/jadidisney?url="
+                } else if (value === "anime") {
+                    api = "https://api.nyxs.pw/ai-image/jadianime?url="
+                } else if (value === "ghibli") {
+                    api = "https://api.nyxs.pw/ai-image/jadighibli?url="
+                } else if (value === "pixel") {
+                    api = "https://api.nyxs.pw/ai-image/jadipixel?url="
+                } else if (value === "dreamscape") {
+                    api = "https://api.nyxs.pw/ai-image/jadidreamscape?url="
+                } else if (value === "comic") {
+                    api = "https://api.nyxs.pw/ai-image/jadicomic?url="
+                } else if (value === "cyberpunk") {
+                    api = "https://api.nyxs.pw/ai-image/jadicyberpunk?url="
+                } else {
+                    api = "https://api.nyxs.pw/ai-image/jadicyberpunk?url="
+                }
+                    fetch(`${api}${url}`)
+                    .then(response => response.json())
                     .then(data => {
-                        const imageURL = URL.createObjectURL(data);
+                        const imageURL = data.result;
                         function generateRandomString(length) {
                             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
                             let result = '';
@@ -45,7 +64,7 @@ function uploadFile() {
                         document.getElementById('hadeImage').innerHTML = image;
                     })
                     .catch(error => {
-                        response += `<p> Banyak yang lagi nge-hadein gambar jadi error, pencet lagi tombolnya</p>`;
+                        response += `<p>Terjadi error, pastikan format file berupa gambar</p>`;
                         console.log(error)
                     })
             })
@@ -56,7 +75,7 @@ function uploadFile() {
             console.log(error)
         })
         .finally(() => {
-            document.getElementById("hadeinDong").style.display = "flex";
+            document.getElementById("transform").style.display = "flex";
         }
         );
 }
