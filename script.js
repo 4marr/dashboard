@@ -77,17 +77,16 @@ switchMode.addEventListener('change', function () {
     }
 })
 
-// Cek apakah ada data kunjungan sebelumnya
-let count = localStorage.getItem('count');
-if (count) {
-    document.getElementById('countVisitors').textContent = count;
-} else {
-    count = 0;
-}
-
-// Tingkatkan nilai counter setiap kali halaman dimuat
-count++;
-localStorage.setItem('count', count);
+let apiCounter = "https://counterpro.vercel.app/api/count/?id=dashhroad"
+fetch(apiCounter)
+.then((res) => {
+    return res.json();
+})
+.then((data) => {
+    console.log(data);
+    let counter = data.count;
+    document.getElementById("countVisitors").innerHTML = counter;
+})
 
 // clock
 function Time() {
