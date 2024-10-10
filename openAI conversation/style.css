@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*Theme*/
+:root {
+    --background-color1: #FFFFFF;
+    --background-color2: #1C1C1C;
+    --background-input: #F0F0F5;
+    --background-div: rgba(223, 240, 255, 0.5);
+    --background-div-hover: rgba(207, 232, 255, 1);
+    --text-color: #0F1921;
+    --text-color-client: #FFFFFF;
+    --span-color: #000000;
+    --header-background-color: rgba( 255, 255, 255, 0.5);
+    --welcome-text-color: rgba( 0, 0, 0, 0.2);
+    --invert--color: invert(0%);
+}
+
+.darkTheme {
+    --background-color1: #1C1C1C;
+    --background-color2: #282828;
+    --background-input: #282828;
+    --background-div: rgba(223, 240, 255, 0.2);
+    --background-div-hover: rgba(207, 232, 255, 0.3);
+    --text-color: #FFFFFF;
+    --text-color-client: #FFFFFF;
+    --span-color: #FFFFFF;
+    --header-background-color: rgba( 0, 0, 0, 0.4);
+    --welcome-text-color: rgba( 255, 255, 255, 0.3);
+    --invert--color: invert(100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background-color1);
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    transition: ease 0.5s;
+}
+
+#loader {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    z-index: 101;
+    background-color: var(--background-color1);
+}
+#loader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid white;
+    border-color: white transparent white transparent;
+    animation: searah 1.2s linear infinite;
+}
+
+@keyframes searah {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button-action > span {
+    margin: 0 0 0 10px;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contentFAQ {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.contentFAQ p {
+    color: var(--text-color);
+    margin: 20px 0;
+}
+
+.qA{
+    background: var(--background-input);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.buildVer {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    bottom: 5px;
+    font-size: 0.75rem;
+}
+
+p {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+strong {
+    font-weight: 600;
+}
+
+.chatBot {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+.chatBot header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: var(--header-background-color);
+    backdrop-filter: blur( 20px );
+    color: var(--text-color);
+    padding: 12px 20px;
+    z-index: 10;
+}
+
+.chatBot header h2 {
+    display: flex;
+    align-items: flex-end;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    background: transparent;
+    font-weight: 600;
+}
+
+.chatBot header h2 span {
+    background: linear-gradient(90deg, rgba(64,93,230,1) 0%, rgba(131,58,180,1) 50%, rgba(225,48,108,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.brand span{
+    color: var(--span-color);
+}
+
+.button-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.button-action span {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chatBot .chatBox {
+    height: 90.5%;
+    overflow-y: auto;
+    padding: 56px 20px 10px;
+}
+
+.chatBox .chat {
+    display: flex;
+}
+
+.chatBox .outgoing {
+    margin: 20px 0;
+    justify-content: flex-end;
+}
+
+.chatBox .chat p {
+    color: var(--text-color-client);
+    max-width: 80vw;
+    box-sizing: border-box;
+    font-size: 0.85rem;
+    padding: 12px 16px;
+    border-radius: 10px 10px 0 10px;
+    background: var(--background-color2);
+    text-wrap: wrap;
+    white-space: pre-wrap;
+}
+
+.chatBox .incoming p {
+    color: var(--text-color);
+    background: none;
+    border-radius: 10px 10px 10px 0;
+}
+
+li:nth-child(odd){
+    display: flex;
+    align-items: flex-start;
+}
+
+.sparkle {
+    width: 20px;
+    filter: var(--invert--color);
+}
+
+.chatBox .incoming .welcome {
+    margin: 30px 0 0 0;
+    white-space: normal;
+    color: var(--welcome-text-color);
+    font-weight: 600;
+}
+
+.welcome span {
+    background: linear-gradient(90deg, rgba(64,93,230,1) 0%, rgba(131,58,180,1) 20%, rgba(225,48,108,1) 38%, rgba(64,93,230,1) 57%, rgba(131,58,180,1) 76%, rgba(225,48,108,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 250%;
+    animation: Gradient-ania 2s forwards;
+    animation-delay: 1s;
+}
+
+@keyframes Gradient-ania {
+    0% {
+        background-position: right;
+    } 100% {
+        background-position: left;
+    }
+}
+
+.saran {
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-color: transparent transparent;
+    scroll-snap-type: x mandatory;
+}
+
+.saran::-webkit-scrollbar {
+    display: none;
+}
+
+.chatBox > .saran > .container-saran {
+    display: flex;
+    overflow-y: hidden;
+    width: 1000px;
+    margin-top: 30px;
+}
+
+.chatBox > .saran > .container-saran > div {
+    position: relative;
+    cursor: pointer;
+    scroll-snap-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px 20px 50px 20px;
+    margin: 0 10px 0 0;
+    background: var(--background-div);
+    color: var(--text-color);
+}
+
+.chatBox > .saran > .container-saran > div:hover {
+    background: var(--background-div-hover);
+}
+
+.container-saran > div > .itemDesk {
+    font-size: 0.80rem;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.container-saran > div > .itemHead {
+    font-size: 0.90rem;
+    margin-top: 5px;
+}
+
+.container-saran > div > span {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0 10px 10px 0;
+}
+
+pre {
+    display: block;
+    white-space: pre-wrap;
+}
+
+.chatBot .chat-input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    /*background: var(--background-input);*/
+    padding: 0 20px;
+    margin: 0 0 20px 0;
+    border-top: 1px solid var(--background-color1);
+    border-radius: 33px;
+    overflow: hidden;
+    box-sizing: border-box;
+    gap: 5px;
+}
+
+.chat-input textarea {
+    font-family: "Poppins", sans-serif;
+    background: var(--background-input);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    font-style: normal;
+    height: 50px;
+    max-height: 150px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.85rem;
+    resize: none;
+    padding: 15px 15px 15px 15px;
+    border-radius: 30px;
+    scrollbar-color: transparent transparent;
+}
+
+.chat-input textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-input textarea::placeholder {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    text-wrap: nowrap;
+}
+
+.chat-input #send-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+    min-width: 45px;
+    color: var(--background-color1);
+    background-color: var(--span-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chat-input textarea:valid ~ #send-button {
+    display: flex;
+}
+
+.chat-input #paste-button {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    line-height: 50px;
+    color: var(--span-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chat-input textarea:valid ~ #paste-button {
+    display: none;
+}
+
+#alert {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+    margin: 2px 0;
+    font-size: 0.60rem;
+    text-align: center;
+    color: #999;
+    text-wrap: nowrap;
+}
