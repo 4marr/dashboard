@@ -110,9 +110,11 @@ fetch(apiCuaca)
         let temperature = data.weatherNow.temperature;
         let weather = data.weatherNow.weather;
 
+        let location = document.getElementById("location");
         let containerTemp = document.getElementById("temperature");
         let containerWeat = document.getElementById("weather");
 
+        location.innerHTML = "Bogor Selatan, Kota Bogor"
         containerTemp.innerHTML = temperature;
         containerWeat.innerHTML = weather;
 
@@ -145,4 +147,8 @@ fetch(apiCuaca)
         else if (data.weatherNow.weather.includes('Kabut')) {
             weatherIcon.innerHTML = icon.FogIcon();
         }
+    })
+    .catch((error) => {
+        document.getElementById("location").innerHTML ="Gagal memuat cuaca";
+        console.log(error);
     })

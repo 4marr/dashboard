@@ -406,13 +406,17 @@ body {
 	background: var(--light-red);
 	color: var(--red);
 }
+#content main .box-info li:nth-child(5) .bx {
+	background: rgba(229, 229, 229, 0.5);
+    padding: 10px;
+}
 #content main .box-info li .text h3 {
 	font-size: 24px;
 	font-weight: 600;
 	color: var(--dark);
 }
 #content main .box-info li .text p {
-	color: var(--dark);	
+	color: var(--dark);
 }
 
 
