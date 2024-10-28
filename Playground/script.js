@@ -77,9 +77,11 @@ switchMode.addEventListener('change', function () {
 
 function show(){
 	Swal.fire({
-  title: "Information!",
-  text: "Banyak fitur yang error, kami akan memperbaiki secepatnya!",
-  icon: "info"
+                icon: "info",
+                title: "Information!",
+                text: "Mohon maaf.. untuk saat ini banyak fitur yang sedang error, kami akan memperbaiki secepatnya!"
+            });
+            return;
 });
 }
 show()
