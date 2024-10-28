@@ -75,8 +75,8 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-function show(){
-	Swal.fire({
+async function show(){
+	await Swal.fire({
                 icon: "info",
                 title: "Information!",
                 text: "Mohon maaf.. untuk saat ini banyak fitur yang sedang error, kami akan memperbaiki secepatnya!"
