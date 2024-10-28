@@ -75,14 +75,11 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-const apiURL = `https://counterpro.vercel.app/api/count/?id=66`
-
-fetch(apiURL)
-.then((res) => {
-	return res.json();
-})
-.then((data) => {
-	data = data.count
-	console.log(data)
-	document.getElementById("countVisitors").innerHTML = data
-})
+function show(){
+	Swal.fire({
+  title: "Information!",
+  text: "Banyak fitur yang error, kami akan memperbaiki secepatnya!",
+  icon: "info"
+});
+}
+show()
