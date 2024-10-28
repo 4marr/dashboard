@@ -82,6 +82,6 @@ function show(){
                 text: "Mohon maaf.. untuk saat ini banyak fitur yang sedang error, kami akan memperbaiki secepatnya!"
             });
             return;
-});
+};
 }
 show()
