@@ -49,7 +49,7 @@ body {
 }
 
 .swal2-container{
-	z-index: 100;
+	z-index: 3000;
 }
 
 
@@ -62,7 +62,7 @@ body {
 	width: 280px;
 	height: 100%;
 	background: var(--light);
-	z-index: 20;
+	z-index: 2000;
 	font-family: var(--lato);
 	transition: .3s ease;
 	overflow-x: hidden;
