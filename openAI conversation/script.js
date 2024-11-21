@@ -78,7 +78,7 @@ const createChatLi = (message, className) => {
 }
 
 let generateResponse = (incomingChatLi) => {
-    const API_URL = "https://widipe.com/post/gpt-prompt";
+    const API_URL = "https://aemt.uk.to/post/gpt-prompt";
     const messageElement = incomingChatLi.querySelector("p");
     chatInput.readOnly = true;
     chatInput.placeholder = 'Mohon tunggu...'
