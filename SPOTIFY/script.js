@@ -47,7 +47,7 @@ function fetchPlaylist() {
         downloadLinks.innerHTML = `
         <div id="container-track">
         <div id="container-image-track">
-                <img src="${data.data.cover}" alt="image_playlist" id="image-track">
+                <img src="${data.metadata.cover}" alt="image_track" id="image-track">
                 </div>
               <h2>${data.metadata.title}</h2>
               <p id="artist">${data.metadata.artists} </p>
