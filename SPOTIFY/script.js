@@ -52,7 +52,7 @@ function fetchPlaylist() {
               <h2>${data.metadata.title}</h2>
               <p id="artist">${data.metadata.artists} </p>
               <div id="container-download-track">
-              <a href="${data.metadata.link}" download>Download Musik</a>
+              <a href="${data.link}" download>Download Musik</a>
               </div>
               </div>
               `;
@@ -162,7 +162,7 @@ function fetchPlaylist() {
                 console.log(data);
 
                 btn2.addEventListener("click", function () {
-                  window.open(data.metadata.link).focus();
+                  window.open(data.link).focus();
                 });
               });
             });
