@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
   loaderPlaylist.style.opacity = "0";
 });
 
-var api = "https://itzpire.com/download/spotify";
+var api = "https://api.ryzendesu.vip/api/downloader/spotify";
 var apiData = "https://api.mininxd.my.id/spotify";
 var searchApi = "https://spotifyapi.caliphdev.com/api/search/tracks"
 
@@ -33,7 +33,7 @@ function fetchPlaylist() {
   // }
   
   if (getURL.includes("spotify.com/track")) {
-    const sptfyTrack = `https://itzpire.com/download/spotify?url=${encodeURIComponent(
+    const sptfyTrack = `https://api.ryzendesu.vip/api/downloader/spotify?url=${encodeURIComponent(
       getURL
     )}`;
     fetch(sptfyTrack)
@@ -47,12 +47,12 @@ function fetchPlaylist() {
         downloadLinks.innerHTML = `
         <div id="container-track">
         <div id="container-image-track">
-                <img src="${data.data.image}" alt="image_playlist" id="image-track">
+                <img src="${data.data.cover}" alt="image_playlist" id="image-track">
                 </div>
-              <h2>${data.data.title}</h2>
-              <p id="artist">${data.data.artist} </p>
+              <h2>${data.metadata.title}</h2>
+              <p id="artist">${data.metadata.artists} </p>
               <div id="container-download-track">
-              <a href="${data.data.download}" download>Download Musik</a>
+              <a href="${data.metadata.link}" download>Download Musik</a>
               </div>
               </div>
               `;
@@ -162,7 +162,7 @@ function fetchPlaylist() {
                 console.log(data);
 
                 btn2.addEventListener("click", function () {
-                  window.open(data.data.download).focus();
+                  window.open(data.metadata.link).focus();
                 });
               });
             });
